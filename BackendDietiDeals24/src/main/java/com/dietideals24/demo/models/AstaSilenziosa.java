@@ -8,16 +8,16 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "asta_silenziosa")
 @PrimaryKeyJoinColumn(name = "id")
-public class Asta_Silenziosa extends Asta {
+public class AstaSilenziosa extends Asta {
 	
 	private String scadenza;
 	
-	public Asta_Silenziosa(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, String scadenza) {
+	public AstaSilenziosa(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, String scadenza) {
 		super(idCreatore, nome, descrizione, categoria, foto);
 		this.scadenza = scadenza;
 	}
 	
-	public Asta_Silenziosa() {}
+	public AstaSilenziosa() {}
 
 	public String getScadenza() {
 		return scadenza;

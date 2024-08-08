@@ -9,11 +9,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dietideals24.demo.enums.StatoAsta;
-import com.dietideals24.demo.models.Asta_Ribasso;
+import com.dietideals24.demo.models.AstaRibasso;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface Asta_Ribasso_Repository extends CrudRepository<Asta_Ribasso, Integer>{
+public interface Asta_Ribasso_Repository extends CrudRepository<AstaRibasso, Integer>{
 	
 	@Transactional
     @Modifying
@@ -26,9 +26,9 @@ public interface Asta_Ribasso_Repository extends CrudRepository<Asta_Ribasso, In
 	void eliminaAstaAlRibasso(@Param("id") int id);
 	
 	@Query("SELECT a FROM Asta_Ribasso a WHERE a.id = :id")
-	Asta_Ribasso getAstaAlRibasso(@Param("id") int id);
+	AstaRibasso getAstaAlRibasso(@Param("id") int id);
 	
 
     @Query("SELECT ar FROM Asta_Ribasso ar JOIN Asta a ON ar.id = a.id WHERE a.stato = :stato")
-    List<Asta_Ribasso> cercaAsteRibasso(StatoAsta stato);
+    List<AstaRibasso> cercaAsteRibasso(StatoAsta stato);
 }

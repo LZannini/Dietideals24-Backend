@@ -81,11 +81,11 @@ public class NotificaServiceImplements implements NotificaService {
 	private NotificaDTO creaNotificaDTO(Notifica notifica) {
 		NotificaDTO notificaDTO = new NotificaDTO();
 		notificaDTO.setId(notifica.getId());
-		notificaDTO.setId_utente(notifica.getId_utente());
-		if(notifica.getId_asta() != null) {
-			notificaDTO.setId_asta(notifica.getId_asta());
+		notificaDTO.setIdUtente(notifica.getIdUtente());
+		if(notifica.getIdAsta() != null) {
+			notificaDTO.setIdAsta(notifica.getIdAsta());
 		} else {
-			notificaDTO.setId_asta(0);
+			notificaDTO.setIdAsta(0);
 		}
 		notificaDTO.setTesto(notifica.getTesto());
 		notificaDTO.setData(notifica.getData());

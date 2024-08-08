@@ -21,8 +21,8 @@ public class OffertaServiceImplements implements OffertaService {
 	@Override
 	public void creaOfferta(OffertaDTO offertaDTO) {
 		Offerta offerta = new Offerta();
-		offerta.setId_utente(offertaDTO.getId_utente());
-		offerta.setId_asta(offertaDTO.getId_asta());
+		offerta.setIdUtente(offertaDTO.getIdUtente());
+		offerta.setIdAsta(offertaDTO.getIdAsta());
 		offerta.setValore(offertaDTO.getValore());
 		offerta.setData(offertaDTO.getData());
 		offerta.setStato(offertaDTO.getStato());
@@ -80,8 +80,8 @@ public class OffertaServiceImplements implements OffertaService {
 	private OffertaDTO creaOffertaDTO(Offerta offerta) {
 		OffertaDTO offertaDTO = new OffertaDTO();
 		offertaDTO.setId(offerta.getId());
-        offertaDTO.setId_asta(offerta.getId_asta());
-        offertaDTO.setId_utente(offerta.getId_utente());
+        offertaDTO.setIdAsta(offerta.getIdAsta());
+        offertaDTO.setIdUtente(offerta.getIdUtente());
         offertaDTO.setValore(offerta.getValore());
         offertaDTO.setData(offerta.getData());
         offertaDTO.setOfferente(offerta.getOfferente());

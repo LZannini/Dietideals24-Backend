@@ -15,7 +15,7 @@ public class Offerta {
 	private String offerente;
 	private StatoOfferta stato;
 	
-	public Offerta(int idUtente, int id_asta, float valore, String data) {
+	public Offerta(int idUtente, int idAsta, float valore, String data) {
 		this.idUtente = idUtente;
 		this.idAsta = idAsta;
 		this.valore = valore;
@@ -34,19 +34,19 @@ public class Offerta {
 		this.id = id;
 	}
 
-	public int getId_utente() {
+	public int getIdUtente() {
 		return idUtente;
 	}
 
-	public void setId_utente(int idUtente) {
+	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
 
-	public int getId_asta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 
-	public void setId_asta(int idAsta) {
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
 

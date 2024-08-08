@@ -22,19 +22,19 @@ public class OffertaDTO implements Serializable {
 		this.id = id;
 	}
 	
-	public int getId_utente() {
+	public int getIdUtente() {
 		return idUtente;
 	}
 
-	public void setId_utente(int idUtente) {
+	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
 
-	public int getId_asta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 
-	public void setId_asta(int idAsta) {
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
 	}
 

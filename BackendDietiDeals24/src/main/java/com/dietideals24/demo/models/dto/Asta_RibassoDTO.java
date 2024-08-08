@@ -15,11 +15,11 @@ public class Asta_RibassoDTO {
     private float decremento;
     private float minimo;
 
-    public int getId_asta() {
+    public int getIdAsta() {
         return idAsta;
     }
 
-    public void setId_asta(int idAsta) {
+    public void setIdAsta(int idAsta) {
         this.idAsta = idAsta;
     }
 

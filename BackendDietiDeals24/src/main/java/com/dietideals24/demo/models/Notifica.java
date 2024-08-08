@@ -37,11 +37,11 @@ public class Notifica {
 		this.id = id;
 	}
 
-	public int getId_utente() {
+	public int getIdUtente() {
 		return idUtente;
 	}
 
-	public void setId_utente(int id_utente) {
+	public void setIdUtente(int id_utente) {
 		this.idUtente = id_utente;
 	}
 
@@ -69,11 +69,11 @@ public class Notifica {
 		this.letta = letta;
 	}
 
-	public Integer getId_asta() {
+	public Integer getIdAsta() {
 		return idAsta;
 	}
 
-	public void setId_asta(Integer idAsta) {
+	public void setIdAsta(Integer idAsta) {
 		this.idAsta = idAsta;
 	}
 	

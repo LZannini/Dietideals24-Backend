@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "asta_ribasso")
 @PrimaryKeyJoinColumn(name = "id")
-public class Asta_Ribasso extends Asta {
+public class AstaRibasso extends Asta {
 	
 	private float prezzo;
 	private String timer;
@@ -17,7 +17,7 @@ public class Asta_Ribasso extends Asta {
 	private float decremento;
 	private float minimo;
 	
-	public Asta_Ribasso(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, float prezzo, String timer, float decremento, float minimo) {
+	public AstaRibasso(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, float prezzo, String timer, float decremento, float minimo) {
 		super(idCreatore, nome, descrizione, categoria, foto);
 		this.prezzo = prezzo;
 		this.timer = timer;
@@ -25,7 +25,7 @@ public class Asta_Ribasso extends Asta {
 		this.minimo = minimo;
 	}
 	
-	public Asta_Ribasso() {}
+	public AstaRibasso() {}
 
 	public float getPrezzo() {
 		return prezzo;

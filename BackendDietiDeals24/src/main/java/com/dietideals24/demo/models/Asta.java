@@ -21,8 +21,8 @@ public class Asta {
 	private byte[] foto;
 	private StatoAsta stato;
 	
-	public Asta(int id_creatore, String nome, String descrizione, Categoria categoria, byte[] foto) {
-		this.idCreatore = id_creatore;
+	public Asta(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto) {
+		this.idCreatore = idCreatore;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
@@ -41,11 +41,11 @@ public class Asta {
 		this.id = id;
 	}
 
-	public int getId_creatore() {
+	public int getIdCreatore() {
 		return idCreatore;
 	}
 
-	public void setId_creatore(int idCreatore) {
+	public void setIdCreatore(int idCreatore) {
 		this.idCreatore = idCreatore;
 	}
 

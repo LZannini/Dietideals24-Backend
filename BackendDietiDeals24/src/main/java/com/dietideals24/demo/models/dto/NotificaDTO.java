@@ -21,11 +21,11 @@ public class NotificaDTO implements Serializable {
 		this.id = id;
 	}
 	
-	public int getId_utente() {
+	public int getIdUtente() {
 		return idUtente;
 	}
 	
-	public void setId_utente(int idUtente) {
+	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
 	
@@ -52,11 +52,11 @@ public class NotificaDTO implements Serializable {
 		this.letta = letta;
 	}
 
-	public Integer getId_asta() {
+	public Integer getIdAsta() {
 		return idAsta;
 	}
 
-	public void setId_asta(Integer idAsta) {
+	public void setIdAsta(Integer idAsta) {
 		this.idAsta = idAsta;
 	}
 }

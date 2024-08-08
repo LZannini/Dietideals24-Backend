@@ -26,11 +26,11 @@ public class AstaDTO implements Serializable {
 		this.id = id;
 	}
 
-	public int getId_creatore() {
+	public int getIdCreatore() {
 		return idCreatore;
 	}
 
-	public void setId_creatore(int idCreatore) {
+	public void setIdCreatore(int idCreatore) {
 		this.idCreatore = idCreatore;
 	}
 

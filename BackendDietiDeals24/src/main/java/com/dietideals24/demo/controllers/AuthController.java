@@ -43,7 +43,7 @@ public class AuthController {
             String nome = (String) payload.get("name");
 
             Utente utente = utenteService.recuperaUtenteByEmail(email);
-            String jwtToken = new String();
+            String jwtToken;
             if (utente == null) {
                 UtenteDTO utenteDto = new UtenteDTO();
                 utenteDto.setEmail(email);

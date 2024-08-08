@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 import com.dietideals24.demo.enums.Categoria;
 import com.dietideals24.demo.enums.StatoAsta;
 import com.dietideals24.demo.models.Asta;
-import com.dietideals24.demo.models.Asta_Inversa;
-import com.dietideals24.demo.models.Asta_Ribasso;
-import com.dietideals24.demo.models.Asta_Silenziosa;
+import com.dietideals24.demo.models.AstaInversa;
+import com.dietideals24.demo.models.AstaRibasso;
+import com.dietideals24.demo.models.AstaSilenziosa;
 import com.dietideals24.demo.models.dto.AstaDTO;
 import com.dietideals24.demo.models.dto.Asta_InversaDTO;
 import com.dietideals24.demo.models.dto.Asta_RibassoDTO;
@@ -44,7 +44,7 @@ public class AstaServiceImplements implements AstaService {
 	@Transactional
 	public void creaAstaInversa(Asta_InversaDTO astaDTO) {
 		Asta asta = new Asta();
-		asta.setId_creatore(astaDTO.getIdCreatore());
+		asta.setIdCreatore(astaDTO.getIdCreatore());
 		asta.setNome(astaDTO.getNome());
 		asta.setDescrizione(astaDTO.getDescrizione());
 		asta.setCategoria(astaDTO.getCategoria());
@@ -57,7 +57,7 @@ public class AstaServiceImplements implements AstaService {
 	@Transactional
 	public void creaAstaAlRibasso(Asta_RibassoDTO astaDTO) {
 		Asta asta = new Asta();
-		asta.setId_creatore(astaDTO.getIdCreatore());
+		asta.setIdCreatore(astaDTO.getIdCreatore());
 		asta.setNome(astaDTO.getNome());
 		asta.setDescrizione(astaDTO.getDescrizione());
 		asta.setCategoria(astaDTO.getCategoria());
@@ -70,7 +70,7 @@ public class AstaServiceImplements implements AstaService {
 	@Transactional
 	public void creaAstaSilenziosa(Asta_SilenziosaDTO astaDTO) {
 		Asta asta = new Asta();
-        asta.setId_creatore(astaDTO.getIdCreatore());
+        asta.setIdCreatore(astaDTO.getIdCreatore());
         asta.setNome(astaDTO.getNome());
         asta.setDescrizione(astaDTO.getDescrizione());
         asta.setCategoria(astaDTO.getCategoria());
@@ -81,9 +81,9 @@ public class AstaServiceImplements implements AstaService {
 	
 	@Override
 	public void rimuoviAsta(int id) {
-		Asta_Inversa astaI = astaInversaRepository.getAstaInversa(id);
-		Asta_Ribasso astaR = astaAlRibassoRepository.getAstaAlRibasso(id);
-		Asta_Silenziosa astaS = astaSilenziosaRepository.getAstaSilenziosa(id);
+		AstaInversa astaI = astaInversaRepository.getAstaInversa(id);
+		AstaRibasso astaR = astaAlRibassoRepository.getAstaAlRibasso(id);
+		AstaSilenziosa astaS = astaSilenziosaRepository.getAstaSilenziosa(id);
 		if (astaI != null) 
 			astaInversaRepository.eliminaAstaInversa(id);	
 		else if (astaR != null) 
@@ -99,11 +99,11 @@ public class AstaServiceImplements implements AstaService {
 		AstaDTO astaDTO = null;
 		if (asta != null) { 
 			astaDTO = creaAstaDTO(asta);
-			if(asta instanceof Asta_Ribasso)
+			if(asta instanceof AstaRibasso)
 				astaDTO.setTipo("RIBASSO");
-			else if(asta instanceof Asta_Silenziosa)
+			else if(asta instanceof AstaSilenziosa)
 				astaDTO.setTipo("SILENZIOSA");
-			else if (asta instanceof Asta_Inversa)
+			else if (asta instanceof AstaInversa)
 				astaDTO.setTipo("INVERSA");
 			}
 		
@@ -161,7 +161,7 @@ public class AstaServiceImplements implements AstaService {
 		AstaDTO astaDTO = new AstaDTO();
 		astaDTO.setNome(asta.getNome());
 		astaDTO.setId(asta.getId());
-		astaDTO.setId_creatore(asta.getId_creatore());
+		astaDTO.setIdCreatore(asta.getIdCreatore());
 		astaDTO.setCategoria(asta.getCategoria());
 		astaDTO.setDescrizione(asta.getDescrizione());
 		astaDTO.setFoto(asta.getFoto());
@@ -171,7 +171,7 @@ public class AstaServiceImplements implements AstaService {
 	}
 	
 	public Asta_InversaDTO trovaAstaInversa(Integer id) {
-        Asta_Inversa astaInversa = astaInversaRepository.getAstaInversa(id);
+        AstaInversa astaInversa = astaInversaRepository.getAstaInversa(id);
         if (astaInversa == null) {
             return null;
         }
@@ -179,7 +179,7 @@ public class AstaServiceImplements implements AstaService {
     }
 
     public Asta_RibassoDTO trovaAstaRibasso(Integer id) {
-        Asta_Ribasso astaRibasso = astaAlRibassoRepository.getAstaAlRibasso(id);
+        AstaRibasso astaRibasso = astaAlRibassoRepository.getAstaAlRibasso(id);
         if (astaRibasso == null) {
             return null;
         }
@@ -187,14 +187,14 @@ public class AstaServiceImplements implements AstaService {
     }
 
     public Asta_SilenziosaDTO trovaAstaSilenziosa(Integer id) {
-        Asta_Silenziosa astaSilenziosa = astaSilenziosaRepository.getAstaSilenziosa(id);
+        AstaSilenziosa astaSilenziosa = astaSilenziosaRepository.getAstaSilenziosa(id);
         if (astaSilenziosa == null) {
             return null;
         }
         return creaAstaSilenziosaDTO(astaSilenziosa);
     }
     
-    private Asta_InversaDTO creaAstaInversaDTO(Asta_Inversa asta) {
+    private Asta_InversaDTO creaAstaInversaDTO(AstaInversa asta) {
 		Asta_InversaDTO astaDTO = new Asta_InversaDTO();
 		astaDTO.setPrezzo(asta.getPrezzo());
 		if(asta.getOffertaMinore() != null) {
@@ -204,7 +204,7 @@ public class AstaServiceImplements implements AstaService {
 		return astaDTO;
 	}
     
-    private Asta_RibassoDTO creaAstaAlRibassoDTO(Asta_Ribasso asta) {
+    private Asta_RibassoDTO creaAstaAlRibassoDTO(AstaRibasso asta) {
 		Asta_RibassoDTO astaDTO = new Asta_RibassoDTO();
 		astaDTO.setPrezzo(asta.getPrezzo());
 		astaDTO.setMinimo(asta.getMinimo());
@@ -213,7 +213,7 @@ public class AstaServiceImplements implements AstaService {
 		return astaDTO;
 	}
     
-    private Asta_SilenziosaDTO creaAstaSilenziosaDTO(Asta_Silenziosa asta) {
+    private Asta_SilenziosaDTO creaAstaSilenziosaDTO(AstaSilenziosa asta) {
 		Asta_SilenziosaDTO astaDTO = new Asta_SilenziosaDTO();
 		astaDTO.setScadenza(asta.getScadenza());
 		return astaDTO;
@@ -222,9 +222,9 @@ public class AstaServiceImplements implements AstaService {
     @Scheduled(cron = "0 0 0 * * ?")
     @Transactional
     public void scadenzaAsteInverse() {
-    	List<Asta_Inversa> asteAttive = astaInversaRepository.cercaAsteInverse(StatoAsta.ATTIVA);
+    	List<AstaInversa> asteAttive = astaInversaRepository.cercaAsteInverse(StatoAsta.ATTIVA);
     	
-    	for(Asta_Inversa asta : asteAttive) {
+    	for(AstaInversa asta : asteAttive) {
     		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     		LocalDateTime scadenzaTime = LocalDateTime.parse(asta.getScadenza(), formatter);
@@ -239,9 +239,9 @@ public class AstaServiceImplements implements AstaService {
     @Scheduled(cron = "0 0 0 * * ?")
     @Transactional
     public void scadenzaAsteSilenziose() {
-    	List<Asta_Silenziosa> asteAttive = astaSilenziosaRepository.cercaAsteSilenziose(StatoAsta.ATTIVA);
+    	List<AstaSilenziosa> asteAttive = astaSilenziosaRepository.cercaAsteSilenziose(StatoAsta.ATTIVA);
     	
-    	for(Asta_Silenziosa asta : asteAttive) {
+    	for(AstaSilenziosa asta : asteAttive) {
     		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     		LocalDateTime scadenzaTime = LocalDateTime.parse(asta.getScadenza(), formatter);
@@ -256,9 +256,9 @@ public class AstaServiceImplements implements AstaService {
     @Scheduled(fixedRate = 1000)
     @Transactional
     public void timerAsteRibasso() {
-    	List<Asta_Ribasso> asteAttive = astaAlRibassoRepository.cercaAsteRibasso(StatoAsta.ATTIVA);
+    	List<AstaRibasso> asteAttive = astaAlRibassoRepository.cercaAsteRibasso(StatoAsta.ATTIVA);
     	    	
-    	for(Asta_Ribasso asta : asteAttive) {    		
+    	for(AstaRibasso asta : asteAttive) {    		
     		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
             LocalTime timer = LocalTime.parse(asta.getTimer(), formatter);
             
@@ -274,7 +274,7 @@ public class AstaServiceImplements implements AstaService {
     	}
     }
     
-    private void decrementaPrezzo(Asta_Ribasso asta) {
+    private void decrementaPrezzo(AstaRibasso asta) {
         float nuovoPrezzo = asta.getPrezzo() - asta.getDecremento();
         if (nuovoPrezzo >= asta.getMinimo()) {
             asta.setPrezzo(nuovoPrezzo);
@@ -288,11 +288,11 @@ public class AstaServiceImplements implements AstaService {
     	if (!checkAste.isEmpty()) {
 			for (Asta a : checkAste) {
 				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
+				if(a instanceof AstaRibasso) {
 					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
+				} else if (a instanceof AstaSilenziosa) {
 					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
+				} else if (a instanceof AstaInversa) {
 					astaDTO.setTipo("INVERSA");
 				}
 				asteTrovate.add(astaDTO);

@@ -9,12 +9,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dietideals24.demo.enums.StatoAsta;
-import com.dietideals24.demo.models.Asta_Silenziosa;
+import com.dietideals24.demo.models.AstaSilenziosa;
 
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface Asta_Silenziosa_Repository extends CrudRepository<Asta_Silenziosa, Integer>{
+public interface Asta_Silenziosa_Repository extends CrudRepository<AstaSilenziosa, Integer>{
 
 	@Transactional
     @Modifying
@@ -27,8 +27,8 @@ public interface Asta_Silenziosa_Repository extends CrudRepository<Asta_Silenzio
 	void eliminaAstaSilenziosa(@Param("id") int id);
 	
 	@Query("SELECT a FROM Asta_Silenziosa a WHERE a.id = :id")
-	Asta_Silenziosa getAstaSilenziosa(@Param("id") int id);
+	AstaSilenziosa getAstaSilenziosa(@Param("id") int id);
 	
 	@Query("SELECT as FROM Asta_Silenziosa as JOIN Asta a ON as.id = a.id WHERE a.stato = :stato")
-    List<Asta_Silenziosa> cercaAsteSilenziose(StatoAsta stato);
+    List<AstaSilenziosa> cercaAsteSilenziose(StatoAsta stato);
 }
