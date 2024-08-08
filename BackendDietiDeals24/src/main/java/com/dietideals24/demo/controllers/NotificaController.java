@@ -20,7 +20,7 @@ public class NotificaController {
 	@Autowired
 	@Qualifier("NotificaService")
 	private NotificaService notificaService;
-	private final String error_string = "Il parametro 'id_utente è null!\n";
+	private final static String error_string = "Il parametro 'id_utente è null!\n";
 	
 	@GetMapping("/notifica/mostraTutte")
 	public ResponseEntity<List<NotificaDTO>> mostraNotifiche(@RequestParam Integer id_utente) {

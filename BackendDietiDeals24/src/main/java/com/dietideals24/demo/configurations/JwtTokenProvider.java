@@ -4,7 +4,6 @@ package com.dietideals24.demo.configurations;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Key;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 
@@ -45,7 +44,6 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
         
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         return Jwts.builder()
                 .setSubject(Integer.toString(userPrincipal.getId()))            
                 .setExpiration(expiryDate)
