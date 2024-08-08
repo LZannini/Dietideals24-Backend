@@ -37,10 +37,10 @@ public class OffertaController {
 	}
 	
 	@GetMapping("/offerta/recuperaPerUtente")
-	public ResponseEntity<List<OffertaDTO>> getOfferte(@RequestParam Integer id_utente) throws IllegalArgumentException {
-		if (id_utente == null) 
+	public ResponseEntity<List<OffertaDTO>> getOfferte(@RequestParam Integer idUtente) throws IllegalArgumentException {
+		if (idUtente == null) 
 			throw new IllegalArgumentException("Errore Recupero Offerte: Il parametro 'id_utente' è null!\n");
-		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteUtente(id_utente);  
+		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteUtente(idUtente);  
 		if (lista_offerteDTO == null || lista_offerteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
@@ -48,10 +48,10 @@ public class OffertaController {
 	}
 	
 	@GetMapping("/offerta/recuperaOrdinate")
-	public ResponseEntity<List<OffertaDTO>> getOfferteOrdinate(@RequestParam Integer id_asta) throws IllegalArgumentException {
-		if (id_asta == null) 
+	public ResponseEntity<List<OffertaDTO>> getOfferteOrdinate(@RequestParam Integer idAsta) throws IllegalArgumentException {
+		if (idAsta == null) 
 			throw new IllegalArgumentException("Errore Recupero Offerte Ordinate: Il parametro 'id_asta' è null!\n");
-		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteOrdinate(id_asta);  
+		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteOrdinate(idAsta);  
 		if (lista_offerteDTO == null || lista_offerteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
@@ -59,16 +59,16 @@ public class OffertaController {
 	}
 	
 	@PutMapping("/offerta/accetta")
-	public void accettaOfferta(@RequestParam Integer id_offerta) throws IllegalArgumentException {
-		if (id_offerta == null)
+	public void accettaOfferta(@RequestParam Integer idOfferta) throws IllegalArgumentException {
+		if (idOfferta == null)
 			throw new IllegalArgumentException("Errore Accetta Offerta: Il parametro 'id_offerta' è null!\n");
-		offertaService.setOffertaAccettata(id_offerta);
+		offertaService.setOffertaAccettata(idOfferta);
 	}
 	
 	@PutMapping("/offerta/rifiuta")
-	public void rifiutaOfferta(@RequestParam Integer id_offerta) throws IllegalArgumentException {
-		if (id_offerta == null)
+	public void rifiutaOfferta(@RequestParam Integer idOfferta) throws IllegalArgumentException {
+		if (idOfferta == null)
 			throw new IllegalArgumentException("Errore Accetta Offerta: Il parametro 'id_offerta' è null!\n");
-		offertaService.setOffertaRifiutata(id_offerta);
+		offertaService.setOffertaRifiutata(idOfferta);
 	}
 }

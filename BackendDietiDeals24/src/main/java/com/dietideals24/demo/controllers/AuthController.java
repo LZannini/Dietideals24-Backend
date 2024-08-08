@@ -45,12 +45,12 @@ public class AuthController {
             Utente utente = utenteService.recuperaUtenteByEmail(email);
             String jwtToken = new String();
             if (utente == null) {
-                UtenteDTO utenteDTO = new UtenteDTO();
-                utenteDTO.setEmail(email);
-                utenteDTO.setUsername(nome);
-                utenteDTO.setPassword("");
-                utenteDTO = utenteService.registraUtente(utenteDTO);
-                jwtToken = tokenProvider.generateTokenFromUserId(utenteDTO.getId());
+                UtenteDTO utenteDto = new UtenteDTO();
+                utenteDto.setEmail(email);
+                utenteDto.setUsername(nome);
+                utenteDto.setPassword("");
+                utenteDto = utenteService.registraUtente(utenteDto);
+                jwtToken = tokenProvider.generateTokenFromUserId(utenteDto.getId());
             } else {
                 jwtToken = tokenProvider.generateTokenFromUserId(utente.getId());            	
             }
@@ -62,11 +62,11 @@ public class AuthController {
     }
 	
 	 @PostMapping("/login")
-		public ResponseEntity<?> login(@RequestBody UtenteDTO utenteDTO) {
+		public ResponseEntity<?> login(@RequestBody UtenteDTO utenteDto) {
 		 	try {
 				Authentication authentication = authenticationManager.authenticate(
 		                new UsernamePasswordAuthenticationToken(
-		                        utenteDTO.getEmail(), utenteDTO.getPassword()));
+		                		utenteDto.getEmail(), utenteDto.getPassword()));
 	
 		        SecurityContextHolder.getContext().setAuthentication(authentication);
 		        
