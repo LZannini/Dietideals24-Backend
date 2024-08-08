@@ -17,13 +17,13 @@ import com.dietideals24.demo.models.AstaInversa;
 import com.dietideals24.demo.models.AstaRibasso;
 import com.dietideals24.demo.models.AstaSilenziosa;
 import com.dietideals24.demo.models.dto.AstaDTO;
-import com.dietideals24.demo.models.dto.Asta_InversaDTO;
-import com.dietideals24.demo.models.dto.Asta_RibassoDTO;
-import com.dietideals24.demo.models.dto.Asta_SilenziosaDTO;
+import com.dietideals24.demo.models.dto.AstaInversaDTO;
+import com.dietideals24.demo.models.dto.AstaRibassoDTO;
+import com.dietideals24.demo.models.dto.AstaSilenziosaDTO;
 import com.dietideals24.demo.repository.AstaRepository;
-import com.dietideals24.demo.repository.Asta_Inversa_Repository;
-import com.dietideals24.demo.repository.Asta_Ribasso_Repository;
-import com.dietideals24.demo.repository.Asta_Silenziosa_Repository;
+import com.dietideals24.demo.repository.AstaInversaRepository;
+import com.dietideals24.demo.repository.AstaRibassoRepository;
+import com.dietideals24.demo.repository.AstaSilenziosaRepository;
 import com.dietideals24.demo.service.AstaService;
 
 import jakarta.transaction.Transactional;
@@ -34,15 +34,15 @@ public class AstaServiceImplements implements AstaService {
 	@Autowired
 	private AstaRepository astaRepository;
 	@Autowired
-	private Asta_Inversa_Repository astaInversaRepository;
+	private AstaInversaRepository astaInversaRepository;
 	@Autowired
-	private Asta_Ribasso_Repository astaAlRibassoRepository;
+	private AstaRibassoRepository astaAlRibassoRepository;
 	@Autowired
-	private Asta_Silenziosa_Repository astaSilenziosaRepository;
+	private AstaSilenziosaRepository astaSilenziosaRepository;
 
 	@Override
 	@Transactional
-	public void creaAstaInversa(Asta_InversaDTO astaDTO) {
+	public void creaAstaInversa(AstaInversaDTO astaDTO) {
 		Asta asta = new Asta();
 		asta.setIdCreatore(astaDTO.getIdCreatore());
 		asta.setNome(astaDTO.getNome());
@@ -55,7 +55,7 @@ public class AstaServiceImplements implements AstaService {
 	
 	@Override
 	@Transactional
-	public void creaAstaAlRibasso(Asta_RibassoDTO astaDTO) {
+	public void creaAstaAlRibasso(AstaRibassoDTO astaDTO) {
 		Asta asta = new Asta();
 		asta.setIdCreatore(astaDTO.getIdCreatore());
 		asta.setNome(astaDTO.getNome());
@@ -68,7 +68,7 @@ public class AstaServiceImplements implements AstaService {
 	
 	@Override
 	@Transactional
-	public void creaAstaSilenziosa(Asta_SilenziosaDTO astaDTO) {
+	public void creaAstaSilenziosa(AstaSilenziosaDTO astaDTO) {
 		Asta asta = new Asta();
         asta.setIdCreatore(astaDTO.getIdCreatore());
         asta.setNome(astaDTO.getNome());
@@ -112,49 +112,37 @@ public class AstaServiceImplements implements AstaService {
 	
 	@Override
 	public List<AstaDTO> trovaTutte() {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.cercaTutte(StatoAsta.ATTIVA);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 	
 	@Override
 	public List<AstaDTO> trovaAsteUtente(int idCreatore) {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.filtraPerUtente(idCreatore);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 	
 	public List<AstaDTO> trovaAsteOfferteUtente(int idUtente) {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.filtraPerOfferteUtente(idUtente);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiave(String chiave) {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.filtraPerParolaChiave(chiave, StatoAsta.ATTIVA);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerCategoria(Categoria categoria) {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.filtraPerCategoria(categoria, StatoAsta.ATTIVA);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiaveAndCategoria(String chiave, Categoria categoria) {
-		List<AstaDTO> asteTrovate = new ArrayList<>();
 		List<Asta> checkAste = astaRepository.filtraPerCategoriaAndParoleChiave(chiave, categoria, StatoAsta.ATTIVA);
-		asteTrovate = riempiListaAste(checkAste, asteTrovate);
-		return asteTrovate;
+		return riempiListaAste(checkAste, new ArrayList<>());
 	}
 	
 	private AstaDTO creaAstaDTO(Asta asta) {
@@ -170,7 +158,7 @@ public class AstaServiceImplements implements AstaService {
 		return astaDTO;
 	}
 	
-	public Asta_InversaDTO trovaAstaInversa(Integer id) {
+	public AstaInversaDTO trovaAstaInversa(Integer id) {
         AstaInversa astaInversa = astaInversaRepository.getAstaInversa(id);
         if (astaInversa == null) {
             return null;
@@ -178,7 +166,7 @@ public class AstaServiceImplements implements AstaService {
         return creaAstaInversaDTO(astaInversa);
     }
 
-    public Asta_RibassoDTO trovaAstaRibasso(Integer id) {
+    public AstaRibassoDTO trovaAstaRibasso(Integer id) {
         AstaRibasso astaRibasso = astaAlRibassoRepository.getAstaAlRibasso(id);
         if (astaRibasso == null) {
             return null;
@@ -186,7 +174,7 @@ public class AstaServiceImplements implements AstaService {
         return creaAstaAlRibassoDTO(astaRibasso);
     }
 
-    public Asta_SilenziosaDTO trovaAstaSilenziosa(Integer id) {
+    public AstaSilenziosaDTO trovaAstaSilenziosa(Integer id) {
         AstaSilenziosa astaSilenziosa = astaSilenziosaRepository.getAstaSilenziosa(id);
         if (astaSilenziosa == null) {
             return null;
@@ -194,8 +182,8 @@ public class AstaServiceImplements implements AstaService {
         return creaAstaSilenziosaDTO(astaSilenziosa);
     }
     
-    private Asta_InversaDTO creaAstaInversaDTO(AstaInversa asta) {
-		Asta_InversaDTO astaDTO = new Asta_InversaDTO();
+    private AstaInversaDTO creaAstaInversaDTO(AstaInversa asta) {
+		AstaInversaDTO astaDTO = new AstaInversaDTO();
 		astaDTO.setPrezzo(asta.getPrezzo());
 		if(asta.getOffertaMinore() != null) {
 			astaDTO.setOffertaMinore(asta.getOffertaMinore());
@@ -204,8 +192,8 @@ public class AstaServiceImplements implements AstaService {
 		return astaDTO;
 	}
     
-    private Asta_RibassoDTO creaAstaAlRibassoDTO(AstaRibasso asta) {
-		Asta_RibassoDTO astaDTO = new Asta_RibassoDTO();
+    private AstaRibassoDTO creaAstaAlRibassoDTO(AstaRibasso asta) {
+		AstaRibassoDTO astaDTO = new AstaRibassoDTO();
 		astaDTO.setPrezzo(asta.getPrezzo());
 		astaDTO.setMinimo(asta.getMinimo());
 		astaDTO.setDecremento(asta.getDecremento());
@@ -213,8 +201,8 @@ public class AstaServiceImplements implements AstaService {
 		return astaDTO;
 	}
     
-    private Asta_SilenziosaDTO creaAstaSilenziosaDTO(AstaSilenziosa asta) {
-		Asta_SilenziosaDTO astaDTO = new Asta_SilenziosaDTO();
+    private AstaSilenziosaDTO creaAstaSilenziosaDTO(AstaSilenziosa asta) {
+		AstaSilenziosaDTO astaDTO = new AstaSilenziosaDTO();
 		astaDTO.setScadenza(asta.getScadenza());
 		return astaDTO;
 	}

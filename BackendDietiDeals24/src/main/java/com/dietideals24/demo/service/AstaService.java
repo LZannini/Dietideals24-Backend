@@ -4,15 +4,15 @@ import java.util.List;
 
 import com.dietideals24.demo.enums.Categoria;
 import com.dietideals24.demo.models.dto.AstaDTO;
-import com.dietideals24.demo.models.dto.Asta_InversaDTO;
-import com.dietideals24.demo.models.dto.Asta_RibassoDTO;
-import com.dietideals24.demo.models.dto.Asta_SilenziosaDTO;
+import com.dietideals24.demo.models.dto.AstaInversaDTO;
+import com.dietideals24.demo.models.dto.AstaRibassoDTO;
+import com.dietideals24.demo.models.dto.AstaSilenziosaDTO;
 
 public interface AstaService {
 	
-	void creaAstaInversa(Asta_InversaDTO astaDTO);
-	void creaAstaAlRibasso(Asta_RibassoDTO astaDTO);
-	void creaAstaSilenziosa(Asta_SilenziosaDTO astaDTO);
+	void creaAstaInversa(AstaInversaDTO astaDTO);
+	void creaAstaAlRibasso(AstaRibassoDTO astaDTO);
+	void creaAstaSilenziosa(AstaSilenziosaDTO astaDTO);
 	void rimuoviAsta(int id);
 	AstaDTO trovaAsta(int id);
 	List<AstaDTO> trovaTutte();
@@ -21,7 +21,7 @@ public interface AstaService {
 	List<AstaDTO> trovaAstePerParolaChiave(String chiave);
 	List<AstaDTO> trovaAstePerCategoria(Categoria categoria);
 	List<AstaDTO> trovaAstePerParolaChiaveAndCategoria(String chiave, Categoria categoria);
-	Asta_InversaDTO trovaAstaInversa(Integer id);
-	Asta_RibassoDTO trovaAstaRibasso(Integer id);
-	Asta_SilenziosaDTO trovaAstaSilenziosa(Integer id);
+	AstaInversaDTO trovaAstaInversa(Integer id);
+	AstaRibassoDTO trovaAstaRibasso(Integer id);
+	AstaSilenziosaDTO trovaAstaSilenziosa(Integer id);
 }

@@ -41,8 +41,8 @@ public class Notifica {
 		return idUtente;
 	}
 
-	public void setIdUtente(int id_utente) {
-		this.idUtente = id_utente;
+	public void setIdUtente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public String getTesto() {

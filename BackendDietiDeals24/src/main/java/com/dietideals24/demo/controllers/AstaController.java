@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dietideals24.demo.enums.Categoria;
 import com.dietideals24.demo.models.dto.AstaDTO;
-import com.dietideals24.demo.models.dto.Asta_InversaDTO;
-import com.dietideals24.demo.models.dto.Asta_RibassoDTO;
-import com.dietideals24.demo.models.dto.Asta_SilenziosaDTO;
+import com.dietideals24.demo.models.dto.AstaInversaDTO;
+import com.dietideals24.demo.models.dto.AstaRibassoDTO;
+import com.dietideals24.demo.models.dto.AstaSilenziosaDTO;
 import com.dietideals24.demo.service.AstaService;
 
 @RestController
@@ -26,19 +26,19 @@ public class AstaController {
     private AstaService astaService;
 	
 	@PostMapping("/asta/creaAstaInversa")
-	public ResponseEntity<AstaDTO> crea(@RequestBody Asta_InversaDTO asta) {
+	public ResponseEntity<AstaDTO> crea(@RequestBody AstaInversaDTO asta) {
 		astaService.creaAstaInversa(asta);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PostMapping("/asta/creaAstaAlRibasso")
-	public ResponseEntity<AstaDTO> crea(@RequestBody Asta_RibassoDTO asta) {
+	public ResponseEntity<AstaDTO> crea(@RequestBody AstaRibassoDTO asta) {
 		astaService.creaAstaAlRibasso(asta);
 		return ResponseEntity.ok().build();
 	}
 	
 	@PostMapping("/asta/creaAstaSilenziosa")
-	public ResponseEntity<AstaDTO> crea(@RequestBody Asta_SilenziosaDTO asta) {
+	public ResponseEntity<AstaDTO> crea(@RequestBody AstaSilenziosaDTO asta) {
 		astaService.creaAstaSilenziosa(asta);
 		return ResponseEntity.ok().build();
 	}
@@ -127,11 +127,11 @@ public class AstaController {
 	}
 	
 	@GetMapping("/asta/dettagliAstaInversa")
-    public ResponseEntity<Asta_InversaDTO> dettagliAstaInversa(@RequestParam Integer id) {
+    public ResponseEntity<AstaInversaDTO> dettagliAstaInversa(@RequestParam Integer id) {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Inversa: Campo 'id' nullo!\n");
         
-        Asta_InversaDTO astaInversaDTO = astaService.trovaAstaInversa(id);
+        AstaInversaDTO astaInversaDTO = astaService.trovaAstaInversa(id);
         if (astaInversaDTO == null)
             return ResponseEntity.notFound().build();
         
@@ -139,11 +139,11 @@ public class AstaController {
     }
 
     @GetMapping("/asta/dettagliAstaRibasso")
-    public ResponseEntity<Asta_RibassoDTO> dettagliAstaRibasso(@RequestParam Integer id) {
+    public ResponseEntity<AstaRibassoDTO> dettagliAstaRibasso(@RequestParam Integer id) {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Al Ribasso: Campo 'id' nullo!\n");
         
-        Asta_RibassoDTO astaRibassoDTO = astaService.trovaAstaRibasso(id);
+        AstaRibassoDTO astaRibassoDTO = astaService.trovaAstaRibasso(id);
         if (astaRibassoDTO == null)
             return ResponseEntity.notFound().build();
         
@@ -151,11 +151,11 @@ public class AstaController {
     }
 
     @GetMapping("/asta/dettagliAstaSilenziosa")
-    public ResponseEntity<Asta_SilenziosaDTO> dettagliAstaSilenziosa(@RequestParam Integer id) {
+    public ResponseEntity<AstaSilenziosaDTO> dettagliAstaSilenziosa(@RequestParam Integer id) {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Silenziosa: Campo 'id' nullo!\n");
         
-        Asta_SilenziosaDTO astaSilenziosaDTO = astaService.trovaAstaSilenziosa(id);
+        AstaSilenziosaDTO astaSilenziosaDTO = astaService.trovaAstaSilenziosa(id);
         if (astaSilenziosaDTO == null)
             return ResponseEntity.notFound().build();
         

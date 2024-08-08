@@ -27,9 +27,9 @@ public class UtenteServiceImplements implements UtenteService {
         utenteDTO.setPassword(passwordEncoder.encode(utenteDTO.getPassword()));
 		utenteRepository.save(UtenteServiceImplements.creaUtente(utenteDTO));
 			
-        java.util.Optional<Utente> check_utente = utenteRepository.findByEmailAndPassword(utenteDTO.getEmail(), utenteDTO.getPassword());
-        if (check_utente.isPresent()) {
-        	Utente utente = check_utente.get();
+        java.util.Optional<Utente> checkUtente = utenteRepository.findByEmailAndPassword(utenteDTO.getEmail(), utenteDTO.getPassword());
+        if (checkUtente.isPresent()) {
+        	Utente utente = checkUtente.get();
             utenteDTO.setId(utente.getId());
             
         }
@@ -39,11 +39,11 @@ public class UtenteServiceImplements implements UtenteService {
 	
 	@Override
 	public UtenteDTO loginUtente(UtenteDTO utenteDTO) {
-	    java.util.Optional<Utente> check_utente = utenteRepository.findByEmail(utenteDTO.getEmail());
-	    if (!check_utente.isPresent() || !passwordEncoder.matches(utenteDTO.getPassword(), check_utente.get().getPassword())) {
+	    java.util.Optional<Utente> checkUtente = utenteRepository.findByEmail(utenteDTO.getEmail());
+	    if (!checkUtente.isPresent() || !passwordEncoder.matches(utenteDTO.getPassword(), checkUtente.get().getPassword())) {
 	        throw new IllegalArgumentException("Utente non trovato o password errata!");
 	    } else {
-	        Utente utente = check_utente.get();
+	        Utente utente = checkUtente.get();
 	        return creaUtenteDTO(utente);
 	    }
 	}
@@ -59,11 +59,11 @@ public class UtenteServiceImplements implements UtenteService {
 	public UtenteDTO modificaPassword(int id, String password) {
 		utenteRepository.updatePassword(password, id);
 		
-		java.util.Optional<Utente> utente_modificato = utenteRepository.findById(id);
-		if(!utente_modificato.isPresent()) {
+		java.util.Optional<Utente> utenteModificato = utenteRepository.findById(id);
+		if(!utenteModificato.isPresent()) {
 			throw new IllegalArgumentException("Utente non trovato!");
 		} else {
-			Utente utente = utente_modificato.get();
+			Utente utente = utenteModificato.get();
 			return UtenteServiceImplements.creaUtenteDTO(utente);
 		}
 	}
@@ -85,12 +85,12 @@ public class UtenteServiceImplements implements UtenteService {
 	
 	@Override
 	public UtenteDTO recuperaUtente(int id, String email) {
-		java.util.Optional<Utente> check_utente = utenteRepository.findByEmailAndId(email, id);
+		java.util.Optional<Utente> checkUtente = utenteRepository.findByEmailAndId(email, id);
 		Utente utente = null;
 		UtenteDTO utenteDTO = null;
 		
-		if (check_utente.isPresent())
-			utente = check_utente.get();
+		if (checkUtente.isPresent())
+			utente = checkUtente.get();
 		
 		if (utente != null) {
 			utenteDTO = creaUtenteDTO(utente);
@@ -100,12 +100,12 @@ public class UtenteServiceImplements implements UtenteService {
 	
 	@Override
 	public UtenteDTO recuperaUtenteById(int id) {
-		java.util.Optional<Utente> check_utente = utenteRepository.findById(id);
+		java.util.Optional<Utente> checkUtente = utenteRepository.findById(id);
 		Utente utente = null;
 		UtenteDTO utenteDTO = null;
 		
-		if (check_utente.isPresent())
-			utente = check_utente.get();
+		if (checkUtente.isPresent())
+			utente = checkUtente.get();
 		
 		if (utente != null) {
 			utenteDTO = creaUtenteDTO(utente);

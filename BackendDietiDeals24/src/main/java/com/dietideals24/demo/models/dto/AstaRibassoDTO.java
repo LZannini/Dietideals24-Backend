@@ -2,7 +2,7 @@ package com.dietideals24.demo.models.dto;
 
 import com.dietideals24.demo.enums.Categoria;
 
-public class Asta_RibassoDTO {
+public class AstaRibassoDTO {
 
     private int idCreatore;
     private String nome;

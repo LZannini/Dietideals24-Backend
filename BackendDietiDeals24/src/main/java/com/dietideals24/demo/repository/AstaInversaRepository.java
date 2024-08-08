@@ -13,7 +13,7 @@ import com.dietideals24.demo.models.AstaInversa;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface Asta_Inversa_Repository extends CrudRepository<AstaInversa, Integer>{
+public interface AstaInversaRepository extends CrudRepository<AstaInversa, Integer>{
 	
 	@Transactional
     @Modifying

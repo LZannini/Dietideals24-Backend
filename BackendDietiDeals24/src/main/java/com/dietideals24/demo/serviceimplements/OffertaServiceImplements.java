@@ -39,32 +39,32 @@ public class OffertaServiceImplements implements OffertaService {
 		Offerta offertaMin = offertaRepository.trovaOffertaMinima(idAsta);
 		if (offertaMin == null)
 			return null;
-		OffertaDTO offertaMin_DTO = creaOffertaDTO(offertaMin);
-		return offertaMin_DTO;
+		OffertaDTO offertaMinDTO = creaOffertaDTO(offertaMin);
+		return offertaMinDTO;
 	}
 
 	@Override
 	public List<OffertaDTO> getOfferteUtente(int idUtente) {
 		List<Offerta> offerte = offertaRepository.trovaOfferteUtente(idUtente);
 
-		List<OffertaDTO> lista_offerteDTO = new ArrayList<>();
+		List<OffertaDTO> listaOfferteDTO = new ArrayList<>();
         for (Offerta o : offerte) {
             OffertaDTO offertaDTO = creaOffertaDTO(o);
-            lista_offerteDTO.add(offertaDTO);
+            listaOfferteDTO.add(offertaDTO);
         }
-        return lista_offerteDTO;
+        return listaOfferteDTO;
 	}
 
 	@Override
 	public List<OffertaDTO> getOfferteOrdinate(int idAsta) {
 		List<Offerta> offerte = offertaRepository.trovaOfferteOrdinate(idAsta);
 
-		List<OffertaDTO> lista_offerteDTO = new ArrayList<>();
+		List<OffertaDTO> listaOfferteDTO = new ArrayList<>();
         for (Offerta o : offerte) {
             OffertaDTO offertaDTO = creaOffertaDTO(o);
-            lista_offerteDTO.add(offertaDTO);
+            listaOfferteDTO.add(offertaDTO);
         }
-        return lista_offerteDTO;
+        return listaOfferteDTO;
 	}
 	
 	@Override

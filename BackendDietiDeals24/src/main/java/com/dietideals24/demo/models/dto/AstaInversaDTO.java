@@ -2,16 +2,17 @@ package com.dietideals24.demo.models.dto;
 
 import com.dietideals24.demo.enums.Categoria;
 
-public class Asta_SilenziosaDTO {
-	
+public class AstaInversaDTO {
 	private int idCreatore;
     private String nome;
     private String descrizione;
     private Categoria categoria;
     private byte[] foto;
     private int idAsta;
+	private float prezzo;
+	private Float offertaMinore;
 	private String scadenza;
-
+	
 	public int getIdCreatore() {
 		return idCreatore;
 	}
@@ -52,12 +53,20 @@ public class Asta_SilenziosaDTO {
 		this.foto = foto;
 	}
 
-	public int getId_asta() {
+	public int getIdAsta() {
 		return idAsta;
 	}
 
-	public void setId_asta(int idAsta) {
+	public void setIdAsta(int idAsta) {
 		this.idAsta = idAsta;
+	}
+
+	public float getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
 	}
 
 	public String getScadenza() {
@@ -68,4 +77,11 @@ public class Asta_SilenziosaDTO {
 		this.scadenza = scadenza;
 	}
 
+	public Float getOffertaMinore() {
+		return offertaMinore;
+	}
+
+	public void setOffertaMinore(Float offertaMinore) {
+		this.offertaMinore = offertaMinore;
+	}
 }

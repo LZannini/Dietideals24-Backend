@@ -14,7 +14,7 @@ import com.dietideals24.demo.models.AstaSilenziosa;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface Asta_Silenziosa_Repository extends CrudRepository<AstaSilenziosa, Integer>{
+public interface AstaSilenziosaRepository extends CrudRepository<AstaSilenziosa, Integer>{
 
 	@Transactional
     @Modifying

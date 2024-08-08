@@ -13,7 +13,7 @@ import com.dietideals24.demo.models.AstaRibasso;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface Asta_Ribasso_Repository extends CrudRepository<AstaRibasso, Integer>{
+public interface AstaRibassoRepository extends CrudRepository<AstaRibasso, Integer>{
 	
 	@Transactional
     @Modifying
