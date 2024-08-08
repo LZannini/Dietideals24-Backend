@@ -31,6 +31,7 @@ public class SecurityConfig {
 	    this.userDetailsService = userDetailsService;
 	}
 
+	@SuppressWarnings("removal")
 	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -62,6 +63,7 @@ public class SecurityConfig {
 	    return new BCryptPasswordEncoder();
 	}
 	    
+	@SuppressWarnings("removal")
 	@Bean
 	public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
 	    return http.getSharedObject(AuthenticationManagerBuilder.class)

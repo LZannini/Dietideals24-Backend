@@ -21,6 +21,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
+@SuppressWarnings("deprecation")
 @Component
 public class JwtTokenProvider {
 

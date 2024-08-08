@@ -11,11 +11,11 @@ import jakarta.persistence.Table;
 @PrimaryKeyJoinColumn(name = "id")
 public class AstaRibasso extends Asta {
 	
-	private float prezzo;
+	private Float prezzo;
 	private String timer;
 	private String timerIniziale;
-	private float decremento;
-	private float minimo;
+	private Float decremento;
+	private Float minimo;
 	
 	public AstaRibasso(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, float prezzo, String timer, float decremento, float minimo) {
 		super(idCreatore, nome, descrizione, categoria, foto);
