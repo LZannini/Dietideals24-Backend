@@ -113,30 +113,30 @@ public class AstaServiceImplements implements AstaService {
 	@Override
 	public List<AstaDTO> trovaTutte() {
 		List<Asta> checkAste = astaRepository.cercaTutte(StatoAsta.ATTIVA);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 	
 	@Override
 	public List<AstaDTO> trovaAsteUtente(int idCreatore) {
 		List<Asta> checkAste = astaRepository.filtraPerUtente(idCreatore);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 	
 	public List<AstaDTO> trovaAsteOfferteUtente(int idUtente) {
 		List<Asta> checkAste = astaRepository.filtraPerOfferteUtente(idUtente);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiave(String chiave) {
 		List<Asta> checkAste = astaRepository.filtraPerParolaChiave(chiave, StatoAsta.ATTIVA);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerCategoria(Categoria categoria) {
 		List<Asta> checkAste = astaRepository.filtraPerCategoria(categoria, StatoAsta.ATTIVA);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 
 	@Override
@@ -272,7 +272,9 @@ public class AstaServiceImplements implements AstaService {
         astaAlRibassoRepository.save(asta);
     }
     
-    private List<AstaDTO> riempiListaAste(List<Asta> checkAste, List<AstaDTO> asteTrovate) {
+    private List<AstaDTO> riempiListaAste(List<Asta> checkAste) {
+    	List<AstaDTO> asteTrovate = new ArrayList<>();
+    	
     	if (!checkAste.isEmpty()) {
 			for (Asta a : checkAste) {
 				AstaDTO astaDTO = creaAstaDTO(a);
