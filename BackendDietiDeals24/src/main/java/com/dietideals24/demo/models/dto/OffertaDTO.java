@@ -7,8 +7,8 @@ import com.dietideals24.demo.enums.StatoOfferta;
 public class OffertaDTO implements Serializable {
 	
 	private int id;
-	private int id_utente;
-	private int id_asta;
+	private int idUtente;
+	private int idAsta;
 	private float valore;
 	private String data;
 	private String offerente;
@@ -23,19 +23,19 @@ public class OffertaDTO implements Serializable {
 	}
 	
 	public int getId_utente() {
-		return id_utente;
+		return idUtente;
 	}
 
-	public void setId_utente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setId_utente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public int getId_asta() {
-		return id_asta;
+		return idAsta;
 	}
 
-	public void setId_asta(int id_asta) {
-		this.id_asta = id_asta;
+	public void setId_asta(int idAsta) {
+		this.idAsta = idAsta;
 	}
 
 	public float getValore() {

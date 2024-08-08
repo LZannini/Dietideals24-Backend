@@ -8,9 +8,9 @@ public interface OffertaService {
 	
 	void creaOfferta(OffertaDTO offertaDTO);
 	void rimuoviOfferta(int id);
-	OffertaDTO getOffertaMinima(int id_asta);
-	List<OffertaDTO> getOfferteUtente(int id_utente);
-	List<OffertaDTO> getOfferteOrdinate(int id_asta);
-	void setOffertaAccettata(int id_offerta);
-	void setOffertaRifiutata(int id_offerta);
+	OffertaDTO getOffertaMinima(int idAsta);
+	List<OffertaDTO> getOfferteUtente(int idUtente);
+	List<OffertaDTO> getOfferteOrdinate(int idAsta);
+	void setOffertaAccettata(int idOfferta);
+	void setOffertaRifiutata(int idOfferta);
 }

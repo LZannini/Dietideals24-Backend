@@ -40,22 +40,22 @@ public class OffertaController {
 	public ResponseEntity<List<OffertaDTO>> getOfferte(@RequestParam Integer idUtente) throws IllegalArgumentException {
 		if (idUtente == null) 
 			throw new IllegalArgumentException("Errore Recupero Offerte: Il parametro 'id_utente' è null!\n");
-		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteUtente(idUtente);  
-		if (lista_offerteDTO == null || lista_offerteDTO.isEmpty())
+		List<OffertaDTO> listaOfferteDTO = offertaService.getOfferteUtente(idUtente);  
+		if (listaOfferteDTO == null || listaOfferteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(lista_offerteDTO);
+		return ResponseEntity.ok(listaOfferteDTO);
 	}
 	
 	@GetMapping("/offerta/recuperaOrdinate")
 	public ResponseEntity<List<OffertaDTO>> getOfferteOrdinate(@RequestParam Integer idAsta) throws IllegalArgumentException {
 		if (idAsta == null) 
 			throw new IllegalArgumentException("Errore Recupero Offerte Ordinate: Il parametro 'id_asta' è null!\n");
-		List<OffertaDTO> lista_offerteDTO = offertaService.getOfferteOrdinate(idAsta);  
-		if (lista_offerteDTO == null || lista_offerteDTO.isEmpty())
+		List<OffertaDTO> listaOfferteDTO = offertaService.getOfferteOrdinate(idAsta);  
+		if (listaOfferteDTO == null || listaOfferteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(lista_offerteDTO);
+		return ResponseEntity.ok(listaOfferteDTO);
 	}
 	
 	@PutMapping("/offerta/accetta")

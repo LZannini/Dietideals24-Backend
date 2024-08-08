@@ -55,11 +55,11 @@ public class AstaController {
 	public ResponseEntity<AstaDTO> recupera(@RequestParam Integer id) {
 		if (id == null)
 			throw new IllegalArgumentException("Errore Recupera Asta: Campo 'id nullo!\n");
-		AstaDTO astaDto = astaService.trovaAsta(id);
-		if (astaDto == null)
+		AstaDTO astaDTO = astaService.trovaAsta(id);
+		if (astaDTO == null)
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(astaDto);
+		return ResponseEntity.ok(astaDTO);
 	}
 	
 	@GetMapping("/asta/cercaTutte")
@@ -75,55 +75,55 @@ public class AstaController {
 	public ResponseEntity<List<AstaDTO>> cercaPerUtente(@RequestParam Integer idCreatore) {
 		if (idCreatore == null)
 			throw new IllegalArgumentException("Errore Ricerca Asta (per utente): Campo 'id_creatore' nullo!\n");
-		List<AstaDTO> listaAsteDto = astaService.trovaAsteUtente(idCreatore);
-		if (listaAsteDto == null || listaAsteDto.isEmpty())
+		List<AstaDTO> listaAsteDTO = astaService.trovaAsteUtente(idCreatore);
+		if (listaAsteDTO == null || listaAsteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(listaAsteDto);
+		return ResponseEntity.ok(listaAsteDTO);
 	}
 	
 	@GetMapping("/asta/cercaPerChiave")
 	public ResponseEntity<List<AstaDTO>> cercaPerParolaChiave(@RequestParam String chiave) {
 		if (chiave == null)
 			throw new IllegalArgumentException("Errore Ricerca Asta (per parola chiave): Campo 'chiave' nullo!\n");
-		List<AstaDTO> listaAsteDto = astaService.trovaAstePerParolaChiave(chiave);
-		if (listaAsteDto == null || listaAsteDto.isEmpty())
+		List<AstaDTO> listaAsteDTO = astaService.trovaAstePerParolaChiave(chiave);
+		if (listaAsteDTO == null || listaAsteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 					
-		return ResponseEntity.ok(listaAsteDto);
+		return ResponseEntity.ok(listaAsteDTO);
 	}
 	
 	@GetMapping("/asta/cercaPerCategoria")
 	public ResponseEntity<List<AstaDTO>> cercaPerCategoria(@RequestParam Categoria categoria) {
 		if (categoria == null)
 			throw new IllegalArgumentException("Errore Ricerca Asta (per categoria): Campo 'categoria' nullo!\n");
-		List<AstaDTO> listaAsteDto = astaService.trovaAstePerCategoria(categoria);
-		if (listaAsteDto == null || listaAsteDto.isEmpty())
+		List<AstaDTO> listaAsteDTO = astaService.trovaAstePerCategoria(categoria);
+		if (listaAsteDTO == null || listaAsteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 					
-		return ResponseEntity.ok(listaAsteDto);
+		return ResponseEntity.ok(listaAsteDTO);
 	}
 	
 	@GetMapping("/asta/cercaPerChiaveAndCategoria")
 	public ResponseEntity<List<AstaDTO>> cercaPerParolaChiaveAndCategoria(@RequestParam String chiave, @RequestParam Categoria categoria) {
 		if (chiave == null || categoria == null)
 			throw new IllegalArgumentException("Errore Ricerca Asta (per chiave e categoria): Campi nulli!\n");
-		List<AstaDTO> listaAsteDto = astaService.trovaAstePerParolaChiaveAndCategoria(chiave, categoria);
-		if (listaAsteDto == null || listaAsteDto.isEmpty())
+		List<AstaDTO> listaAsteDTO = astaService.trovaAstePerParolaChiaveAndCategoria(chiave, categoria);
+		if (listaAsteDTO == null || listaAsteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(listaAsteDto);
+		return ResponseEntity.ok(listaAsteDTO);
 	}
 	
 	@GetMapping("/asta/cercaPerOfferteUtente")
 	public ResponseEntity<List<AstaDTO>> cercaPerOfferteUtente(@RequestParam Integer idUtente){
 		if (idUtente == null)
 			throw new IllegalArgumentException("Errore Ricerca Asta (per utente): Campo 'id_utente' nullo!\n");
-		List<AstaDTO> listaAsteDto = astaService.trovaAsteOfferteUtente(idUtente);
-		if (listaAsteDto == null || listaAsteDto.isEmpty())
+		List<AstaDTO> listaAsteDTO = astaService.trovaAsteOfferteUtente(idUtente);
+		if (listaAsteDTO == null || listaAsteDTO.isEmpty())
 			return ResponseEntity.notFound().build();
 		
-		return ResponseEntity.ok(listaAsteDto);
+		return ResponseEntity.ok(listaAsteDTO);
 	}
 	
 	@GetMapping("/asta/dettagliAstaInversa")
@@ -131,11 +131,11 @@ public class AstaController {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Inversa: Campo 'id' nullo!\n");
         
-        Asta_InversaDTO astaInversaDto = astaService.trovaAstaInversa(id);
-        if (astaInversaDto == null)
+        Asta_InversaDTO astaInversaDTO = astaService.trovaAstaInversa(id);
+        if (astaInversaDTO == null)
             return ResponseEntity.notFound().build();
         
-        return ResponseEntity.ok(astaInversaDto);
+        return ResponseEntity.ok(astaInversaDTO);
     }
 
     @GetMapping("/asta/dettagliAstaRibasso")
@@ -143,11 +143,11 @@ public class AstaController {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Al Ribasso: Campo 'id' nullo!\n");
         
-        Asta_RibassoDTO astaRibassoDto = astaService.trovaAstaRibasso(id);
-        if (astaRibassoDto == null)
+        Asta_RibassoDTO astaRibassoDTO = astaService.trovaAstaRibasso(id);
+        if (astaRibassoDTO == null)
             return ResponseEntity.notFound().build();
         
-        return ResponseEntity.ok(astaRibassoDto);
+        return ResponseEntity.ok(astaRibassoDTO);
     }
 
     @GetMapping("/asta/dettagliAstaSilenziosa")
@@ -155,10 +155,10 @@ public class AstaController {
         if (id == null)
             throw new IllegalArgumentException("Errore Ricerca Asta Silenziosa: Campo 'id' nullo!\n");
         
-        Asta_SilenziosaDTO astaSilenziosaDto = astaService.trovaAstaSilenziosa(id);
-        if (astaSilenziosaDto == null)
+        Asta_SilenziosaDTO astaSilenziosaDTO = astaService.trovaAstaSilenziosa(id);
+        if (astaSilenziosaDTO == null)
             return ResponseEntity.notFound().build();
         
-        return ResponseEntity.ok(astaSilenziosaDto);
+        return ResponseEntity.ok(astaSilenziosaDTO);
     }
  }

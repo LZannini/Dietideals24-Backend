@@ -112,49 +112,49 @@ public class AstaServiceImplements implements AstaService {
 	
 	@Override
 	public List<AstaDTO> trovaTutte() {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.cercaTutte(StatoAsta.ATTIVA);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.cercaTutte(StatoAsta.ATTIVA);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 	
 	@Override
-	public List<AstaDTO> trovaAsteUtente(int id_creatore) {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.filtraPerUtente(id_creatore);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+	public List<AstaDTO> trovaAsteUtente(int idCreatore) {
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.filtraPerUtente(idCreatore);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 	
-	public List<AstaDTO> trovaAsteOfferteUtente(int id_utente) {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.filtraPerOfferteUtente(id_utente);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+	public List<AstaDTO> trovaAsteOfferteUtente(int idUtente) {
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.filtraPerOfferteUtente(idUtente);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiave(String chiave) {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.filtraPerParolaChiave(chiave, StatoAsta.ATTIVA);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.filtraPerParolaChiave(chiave, StatoAsta.ATTIVA);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerCategoria(Categoria categoria) {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.filtraPerCategoria(categoria, StatoAsta.ATTIVA);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.filtraPerCategoria(categoria, StatoAsta.ATTIVA);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiaveAndCategoria(String chiave, Categoria categoria) {
-		List<AstaDTO> aste_trovate = new ArrayList<>();
-		List<Asta> check_aste = astaRepository.filtraPerCategoriaAndParoleChiave(chiave, categoria, StatoAsta.ATTIVA);
-		aste_trovate = riempiListaAste(check_aste, aste_trovate);
-		return aste_trovate;
+		List<AstaDTO> asteTrovate = new ArrayList<>();
+		List<Asta> checkAste = astaRepository.filtraPerCategoriaAndParoleChiave(chiave, categoria, StatoAsta.ATTIVA);
+		asteTrovate = riempiListaAste(checkAste, asteTrovate);
+		return asteTrovate;
 	}
 	
 	private AstaDTO creaAstaDTO(Asta asta) {
@@ -284,9 +284,9 @@ public class AstaServiceImplements implements AstaService {
         astaAlRibassoRepository.save(asta);
     }
     
-    private List<AstaDTO> riempiListaAste(List<Asta> check_aste, List<AstaDTO> aste_trovate) {
-    	if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
+    private List<AstaDTO> riempiListaAste(List<Asta> checkAste, List<AstaDTO> asteTrovate) {
+    	if (!checkAste.isEmpty()) {
+			for (Asta a : checkAste) {
 				AstaDTO astaDTO = creaAstaDTO(a);
 				if(a instanceof Asta_Ribasso) {
 					astaDTO.setTipo("RIBASSO");
@@ -295,9 +295,9 @@ public class AstaServiceImplements implements AstaService {
 				} else if (a instanceof Asta_Inversa) {
 					astaDTO.setTipo("INVERSA");
 				}
-				aste_trovate.add(astaDTO);
+				asteTrovate.add(astaDTO);
 			}
 		}
-    	return aste_trovate;
+    	return asteTrovate;
     }
 }

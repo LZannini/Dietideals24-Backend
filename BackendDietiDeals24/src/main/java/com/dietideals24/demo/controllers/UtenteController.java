@@ -63,7 +63,7 @@ public class UtenteController {
 		}
 		
 		@PostMapping("/utente/modPassword")
-		public ResponseEntity<UtenteDTO> modifica_password(@RequestBody UtenteDTO utenteDTO) {
+		public ResponseEntity<UtenteDTO> modificaPassword(@RequestBody UtenteDTO utenteDTO) {
 			try {
 				UtenteDTO utenteModificato = utenteService.modificaPassword(utenteDTO.getId(), utenteDTO.getPassword());
 				return ResponseEntity.ok(utenteModificato);

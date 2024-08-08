@@ -13,7 +13,7 @@ public class Asta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int id_creatore;
+	private int idCreatore;
 	private Integer vincitore;
 	private String nome;
 	private String descrizione;
@@ -22,7 +22,7 @@ public class Asta {
 	private StatoAsta stato;
 	
 	public Asta(int id_creatore, String nome, String descrizione, Categoria categoria, byte[] foto) {
-		this.id_creatore = id_creatore;
+		this.idCreatore = id_creatore;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.categoria = categoria;
@@ -42,11 +42,11 @@ public class Asta {
 	}
 
 	public int getId_creatore() {
-		return id_creatore;
+		return idCreatore;
 	}
 
-	public void setId_creatore(int id_creatore) {
-		this.id_creatore = id_creatore;
+	public void setId_creatore(int idCreatore) {
+		this.idCreatore = idCreatore;
 	}
 
 	public String getNome() {

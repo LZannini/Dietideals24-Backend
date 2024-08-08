@@ -18,8 +18,8 @@ public class NotificaServiceImplements implements NotificaService {
 	private NotificaRepository notificaRepository;
 
 	@Override
-	public List<NotificaDTO> getNotifiche(int id_utente) {
-		List<Notifica> notifiche = notificaRepository.trovaNotifiche(id_utente);
+	public List<NotificaDTO> getNotifiche(int idUtente) {
+		List<Notifica> notifiche = notificaRepository.trovaNotifiche(idUtente);
 
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
@@ -30,8 +30,8 @@ public class NotificaServiceImplements implements NotificaService {
 	}
 
 	@Override
-	public List<NotificaDTO> getNotificheLette(int id_utente) {
-		List<Notifica> notifiche = notificaRepository.trovaNotificheLette(id_utente);
+	public List<NotificaDTO> getNotificheLette(int idUtente) {
+		List<Notifica> notifiche = notificaRepository.trovaNotificheLette(idUtente);
 
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
@@ -42,8 +42,8 @@ public class NotificaServiceImplements implements NotificaService {
 	}
 
 	@Override
-	public List<NotificaDTO> getNotificheNonLette(int id_utente) {
-		List<Notifica> notifiche = notificaRepository.trovaNotificheNonLette(id_utente);
+	public List<NotificaDTO> getNotificheNonLette(int idUtente) {
+		List<Notifica> notifiche = notificaRepository.trovaNotificheNonLette(idUtente);
 
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
@@ -54,8 +54,8 @@ public class NotificaServiceImplements implements NotificaService {
 	}
 	
 	@Override
-	public void setAllNotificheAsLette(int id_utente) {
-		notificaRepository.segnaAllNotificheComeLette(id_utente);
+	public void setAllNotificheAsLette(int idUtente) {
+		notificaRepository.segnaAllNotificheComeLette(idUtente);
 	}
 	
 	@Override
@@ -69,13 +69,13 @@ public class NotificaServiceImplements implements NotificaService {
 	}
 
 	@Override
-	public void rimuoviNotifiche(int id_utente) {
-		notificaRepository.eliminaNotifiche(id_utente);
+	public void rimuoviNotifiche(int idUtente) {
+		notificaRepository.eliminaNotifiche(idUtente);
 	}
 
 	@Override
-	public void rimuoviNotificheLette(int id_utente) {
-		notificaRepository.eliminaNotificheLette(id_utente);
+	public void rimuoviNotificheLette(int idUtente) {
+		notificaRepository.eliminaNotificheLette(idUtente);
 	}
 	
 	private NotificaDTO creaNotificaDTO(Notifica notifica) {

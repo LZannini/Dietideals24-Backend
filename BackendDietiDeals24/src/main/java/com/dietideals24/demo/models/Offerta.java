@@ -8,16 +8,16 @@ public class Offerta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int id_utente;
-	private int id_asta;
+	private int idUtente;
+	private int idAsta;
 	private float valore;
 	private String data;
 	private String offerente;
 	private StatoOfferta stato;
 	
-	public Offerta(int id_utente, int id_asta, float valore, String data) {
-		this.id_utente = id_utente;
-		this.id_asta = id_asta;
+	public Offerta(int idUtente, int id_asta, float valore, String data) {
+		this.idUtente = idUtente;
+		this.idAsta = idAsta;
 		this.valore = valore;
 		this.data = data;
 	}
@@ -35,19 +35,19 @@ public class Offerta {
 	}
 
 	public int getId_utente() {
-		return id_utente;
+		return idUtente;
 	}
 
-	public void setId_utente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setId_utente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 
 	public int getId_asta() {
-		return id_asta;
+		return idAsta;
 	}
 
-	public void setId_asta(int id_asta) {
-		this.id_asta = id_asta;
+	public void setId_asta(int idAsta) {
+		this.idAsta = idAsta;
 	}
 
 	public float getValore() {

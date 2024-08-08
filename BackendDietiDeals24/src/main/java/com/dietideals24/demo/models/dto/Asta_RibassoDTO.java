@@ -9,18 +9,18 @@ public class Asta_RibassoDTO {
     private String descrizione;
     private Categoria categoria;
     private byte[] foto;
-    private int id_asta;
+    private int idAsta;
     private float prezzo;
     private String timer;
     private float decremento;
     private float minimo;
 
     public int getId_asta() {
-        return id_asta;
+        return idAsta;
     }
 
-    public void setId_asta(int id_asta) {
-        this.id_asta = id_asta;
+    public void setId_asta(int idAsta) {
+        this.idAsta = idAsta;
     }
 
     public int getIdCreatore() {

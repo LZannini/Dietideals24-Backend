@@ -17,8 +17,8 @@ public interface Asta_Ribasso_Repository extends CrudRepository<Asta_Ribasso, In
 	
 	@Transactional
     @Modifying
-    @Query(value = "INSERT INTO asta_ribasso (id, prezzo, timer, decremento, minimo) VALUES (:id_asta, :prezzo, :timer, :decremento, :minimo)", nativeQuery = true)
-    void insertAstaAlRibasso(@Param("id_asta") int id_asta, @Param("prezzo") float prezzo, @Param("timer") String timer, @Param("decremento") float decremento, @Param("minimo") float minimo);
+    @Query(value = "INSERT INTO asta_ribasso (id, prezzo, timer, decremento, minimo) VALUES (:idAsta, :prezzo, :timer, :decremento, :minimo)", nativeQuery = true)
+    void insertAstaAlRibasso(@Param("id_asta") int idAsta, @Param("prezzo") float prezzo, @Param("timer") String timer, @Param("decremento") float decremento, @Param("minimo") float minimo);
 
 	@Transactional
 	@Modifying

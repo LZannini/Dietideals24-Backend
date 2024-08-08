@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 public class NotificaDTO implements Serializable {
 	
 	private int id;
-	private int id_utente;
-	private Integer id_asta;
+	private int idUtente;
+	private Integer idAsta;
 	private String testo;
 	private LocalDateTime data;
 	private boolean letta;
@@ -22,11 +22,11 @@ public class NotificaDTO implements Serializable {
 	}
 	
 	public int getId_utente() {
-		return id_utente;
+		return idUtente;
 	}
 	
-	public void setId_utente(int id_utente) {
-		this.id_utente = id_utente;
+	public void setId_utente(int idUtente) {
+		this.idUtente = idUtente;
 	}
 	
 	public String getTesto() {
@@ -53,10 +53,10 @@ public class NotificaDTO implements Serializable {
 	}
 
 	public Integer getId_asta() {
-		return id_asta;
+		return idAsta;
 	}
 
-	public void setId_asta(Integer id_asta) {
-		this.id_asta = id_asta;
+	public void setId_asta(Integer idAsta) {
+		this.idAsta = idAsta;
 	}
 }

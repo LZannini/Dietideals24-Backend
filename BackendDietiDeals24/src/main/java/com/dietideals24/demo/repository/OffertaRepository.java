@@ -16,14 +16,14 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface OffertaRepository extends CrudRepository<Offerta, Integer>{
   
-	 @Query("SELECT o FROM Offerta o WHERE o.id_utente = :id_utente")
-	 List<Offerta> trovaOfferteUtente(@Param("id_utente") int id_utente);
+	 @Query("SELECT o FROM Offerta o WHERE o.id_utente = :idUtente")
+	 List<Offerta> trovaOfferteUtente(@Param("id_utente") int idUtente);
 	 
-	 @Query("SELECT o FROM Offerta o WHERE o.id_asta = :id_asta AND o.stato = 0 ORDER BY o.valore DESC")
-	 List<Offerta> trovaOfferteOrdinate(@Param("id_asta") int id_asta);
+	 @Query("SELECT o FROM Offerta o WHERE o.id_asta = :idAsta AND o.stato = 0 ORDER BY o.valore DESC")
+	 List<Offerta> trovaOfferteOrdinate(@Param("id_asta") int idAsta);
 	 
-	 @Query("SELECT o FROM Offerta o WHERE o.id_asta = :id_asta ORDER BY o.valore ASC LIMIT 1")
-	 Offerta trovaOffertaMinima(@Param("id_asta") int id_asta);
+	 @Query("SELECT o FROM Offerta o WHERE o.id_asta = :idAsta ORDER BY o.valore ASC LIMIT 1")
+	 Offerta trovaOffertaMinima(@Param("id_asta") int idAsta);
 	 
 	 @Transactional
 	 @Modifying

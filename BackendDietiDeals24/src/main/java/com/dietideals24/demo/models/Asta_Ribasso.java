@@ -13,12 +13,12 @@ public class Asta_Ribasso extends Asta {
 	
 	private float prezzo;
 	private String timer;
-	private String timer_iniziale;
+	private String timerIniziale;
 	private float decremento;
 	private float minimo;
 	
-	public Asta_Ribasso(int id_creatore, String nome, String descrizione, Categoria categoria, byte[] foto, float prezzo, String timer, float decremento, float minimo) {
-		super(id_creatore, nome, descrizione, categoria, foto);
+	public Asta_Ribasso(int idCreatore, String nome, String descrizione, Categoria categoria, byte[] foto, float prezzo, String timer, float decremento, float minimo) {
+		super(idCreatore, nome, descrizione, categoria, foto);
 		this.prezzo = prezzo;
 		this.timer = timer;
 		this.decremento = decremento;
@@ -44,11 +44,11 @@ public class Asta_Ribasso extends Asta {
 	}
 	
 	public String getTimerIniziale() {
-		return timer_iniziale;
+		return timerIniziale;
 	}
 
-	public void setTimerIniziale(String timer_iniziale) {
-		this.timer_iniziale = timer_iniziale;
+	public void setTimerIniziale(String timerIniziale) {
+		this.timerIniziale = timerIniziale;
 	}
 
 	public float getDecremento() {

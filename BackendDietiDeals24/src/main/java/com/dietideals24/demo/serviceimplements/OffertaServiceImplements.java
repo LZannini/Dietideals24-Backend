@@ -35,8 +35,8 @@ public class OffertaServiceImplements implements OffertaService {
 	}
 	
 	@Override
-	public OffertaDTO getOffertaMinima(int id_asta) {
-		Offerta offertaMin = offertaRepository.trovaOffertaMinima(id_asta);
+	public OffertaDTO getOffertaMinima(int idAsta) {
+		Offerta offertaMin = offertaRepository.trovaOffertaMinima(idAsta);
 		if (offertaMin == null)
 			return null;
 		OffertaDTO offertaMin_DTO = creaOffertaDTO(offertaMin);
@@ -44,8 +44,8 @@ public class OffertaServiceImplements implements OffertaService {
 	}
 
 	@Override
-	public List<OffertaDTO> getOfferteUtente(int id_utente) {
-		List<Offerta> offerte = offertaRepository.trovaOfferteUtente(id_utente);
+	public List<OffertaDTO> getOfferteUtente(int idUtente) {
+		List<Offerta> offerte = offertaRepository.trovaOfferteUtente(idUtente);
 
 		List<OffertaDTO> lista_offerteDTO = new ArrayList<>();
         for (Offerta o : offerte) {
@@ -56,8 +56,8 @@ public class OffertaServiceImplements implements OffertaService {
 	}
 
 	@Override
-	public List<OffertaDTO> getOfferteOrdinate(int id_asta) {
-		List<Offerta> offerte = offertaRepository.trovaOfferteOrdinate(id_asta);
+	public List<OffertaDTO> getOfferteOrdinate(int idAsta) {
+		List<Offerta> offerte = offertaRepository.trovaOfferteOrdinate(idAsta);
 
 		List<OffertaDTO> lista_offerteDTO = new ArrayList<>();
         for (Offerta o : offerte) {
@@ -68,13 +68,13 @@ public class OffertaServiceImplements implements OffertaService {
 	}
 	
 	@Override
-	public void setOffertaAccettata(int id_offerta) {
-		offertaRepository.updateStatoOfferta(id_offerta, StatoOfferta.ACCETTATA);
+	public void setOffertaAccettata(int idOfferta) {
+		offertaRepository.updateStatoOfferta(idOfferta, StatoOfferta.ACCETTATA);
 	}
 	
 	@Override
-	public void setOffertaRifiutata(int id_offerta) {
-		offertaRepository.updateStatoOfferta(id_offerta, StatoOfferta.RIFIUTATA);
+	public void setOffertaRifiutata(int idOfferta) {
+		offertaRepository.updateStatoOfferta(idOfferta, StatoOfferta.RIFIUTATA);
 	}
 	
 	private OffertaDTO creaOffertaDTO(Offerta offerta) {
