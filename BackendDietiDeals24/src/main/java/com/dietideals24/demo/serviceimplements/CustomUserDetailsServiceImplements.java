@@ -35,16 +35,19 @@ public class CustomUserDetailsServiceImplements implements UserDetailsService{
 	}
 	
 	public UserDetails loadUserById(int id) throws UsernameNotFoundException {
-		if(id == 0) return null;
-        Utente utente = utenteRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
-        
-        return new CustomUserDetails(
-                utente.getId(),
-                utente.getEmail(),
-                utente.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority(utente.getTipo().toString()))
-        );
-    }
+	    if(id == 0) {
+	        return null;
+	    }
+	    Utente utente = utenteRepository.findById(id)
+	            .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
+	    
+	    return new CustomUserDetails(
+	            utente.getId(),
+	            utente.getEmail(),
+	            utente.getPassword(),
+	            Collections.singletonList(new SimpleGrantedAuthority(utente.getTipo().toString()))
+	    );
+	}
+
 
 }

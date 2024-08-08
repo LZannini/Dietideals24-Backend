@@ -36,11 +36,11 @@ public class OffertaServiceImplements implements OffertaService {
 	
 	@Override
 	public OffertaDTO getOffertaMinima(int idAsta) {
-		Offerta offertaMin = offertaRepository.trovaOffertaMinima(idAsta);
-		if (offertaMin == null)
-			return null;
-		OffertaDTO offertaMinDTO = creaOffertaDTO(offertaMin);
-		return offertaMinDTO;
+	    Offerta offertaMin = offertaRepository.trovaOffertaMinima(idAsta);
+	    if (offertaMin == null) {
+	        return null;
+	    }
+	    return creaOffertaDTO(offertaMin);
 	}
 
 	@Override

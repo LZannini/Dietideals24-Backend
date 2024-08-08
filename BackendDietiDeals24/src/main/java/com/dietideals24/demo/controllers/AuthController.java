@@ -36,7 +36,7 @@ public class AuthController {
 
 	
     @PostMapping("/google")
-    public ResponseEntity<?> googleLogin(@RequestParam("idToken") String idToken) {
+    public ResponseEntity<Object> googleLogin(@RequestParam("idToken") String idToken) {
         try {
             GoogleIdToken.Payload payload = tokenProvider.verifyGoogleToken(idToken);
             String email = payload.getEmail();
@@ -62,7 +62,7 @@ public class AuthController {
     }
 	
 	 @PostMapping("/login")
-		public ResponseEntity<?> login(@RequestBody UtenteDTO utenteDto) {
+		public ResponseEntity<Object> login(@RequestBody UtenteDTO utenteDto) {
 		 	try {
 				Authentication authentication = authenticationManager.authenticate(
 		                new UsernamePasswordAuthenticationToken(

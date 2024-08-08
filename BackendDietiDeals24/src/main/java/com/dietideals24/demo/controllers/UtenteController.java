@@ -55,7 +55,7 @@ public class UtenteController {
 	@PostMapping("/utente/aggiorna")
 		public ResponseEntity<UtenteDTO> aggiorna(@RequestBody UtenteDTO utenteDTO) {
 			try {
-				UtenteDTO utenteModificato = utenteService.updateUtente(utenteDTO);;
+				UtenteDTO utenteModificato = utenteService.updateUtente(utenteDTO);
 				return ResponseEntity.ok(utenteModificato);
 			} catch (IllegalArgumentException e) {
 				return ResponseEntity.notFound().build();
