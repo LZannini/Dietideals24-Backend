@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dietideals24.demo.configurations.JwtAuthenticationResponse;
 import com.dietideals24.demo.configurations.JwtTokenProvider;
-import com.dietideals24.demo.models.Utente;
 import com.dietideals24.demo.models.dto.UtenteDTO;
 import com.dietideals24.demo.service.UtenteService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
