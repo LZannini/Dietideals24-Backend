@@ -10,71 +10,69 @@ import jakarta.persistence.Id;
 @Entity
 public class Notifica {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private int idUtente;
-	private Integer idAsta;
-	private String testo;
-	private LocalDateTime data;
-	private boolean letta;
-	
-	public Notifica(int id, int idUtente, String testo, LocalDateTime data, boolean letta) {
-		this.id = id;
-		this.idUtente = idUtente;
-		this.testo = testo;
-		this.data = data;
-		this.letta = letta;
-	}
-		
-	public Notifica() {}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int idUtente;
+    private Integer idAsta;
+    private String testo;
+    private LocalDateTime data;
+    private boolean letta;
 
-	public int getId() {
-		return id;
-	}
+    public Notifica(int idUtente, String testo, LocalDateTime data, boolean letta) {
+        this.idUtente = idUtente;
+        this.testo = testo;
+        this.data = data;
+        this.letta = letta;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Notifica() {}
 
-	public int getIdUtente() {
-		return idUtente;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setIdUtente(int idUtente) {
-		this.idUtente = idUtente;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getTesto() {
-		return testo;
-	}
+    public int getIdUtente() {
+        return idUtente;
+    }
 
-	public void setTesto(String testo) {
-		this.testo = testo;
-	}
-	
-	public LocalDateTime getData() {
-		return data;
-	}
-	
-	public void setData(LocalDateTime data) {
-		this.data = data;
-	}
+    public void setIdUtente(int idUtente) {
+        this.idUtente = idUtente;
+    }
 
-	public boolean isLetta() {
-		return letta;
-	}
+    public String getTesto() {
+        return testo;
+    }
 
-	public void setLetta(boolean letta) {
-		this.letta = letta;
-	}
+    public void setTesto(String testo) {
+        this.testo = testo;
+    }
 
-	public Integer getIdAsta() {
-		return idAsta;
-	}
+    public LocalDateTime getData() {
+        return data;
+    }
 
-	public void setIdAsta(Integer idAsta) {
-		this.idAsta = idAsta;
-	}
-	
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public boolean isLetta() {
+        return letta;
+    }
+
+    public void setLetta(boolean letta) {
+        this.letta = letta;
+    }
+
+    public Integer getIdAsta() {
+        return idAsta;
+    }
+
+    public void setIdAsta(Integer idAsta) {
+        this.idAsta = idAsta;
+    }
 }

@@ -8,104 +8,109 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 public class Utente {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@NotEmpty(message = "Il campo username non può essere vuoto")
-	private String username;
-	@NotEmpty(message = "Il campo email non può essere vuoto")
-	@Email(message = "Deve essere un indirizzo email valido")
-	private String email;
-	@NotEmpty(message = "Il campo password non può essere vuoto")
-	@Size(min = 4, message = "La password deve contenere almeno 4 caratteri")
-	private String password;
-	private String biografia;
-	private String sitoweb;
-	private String paese;
-	@Enumerated
-	private TipoUtente tipo;
-	private byte[] avatar;
-	
-	public Utente(String username, String email, String password) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
-	
-	public Utente() {
-		
-	}
 
-	public int getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @NotEmpty(message = "Il campo username non può essere vuoto")
+    private String username;
 
-	public String getUsername() {
-		return username;
-	}
+    @NotEmpty(message = "Il campo email non può essere vuoto")
+    @Email(message = "Deve essere un indirizzo email valido")
+    private String email;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    @NotEmpty(message = "Il campo password non può essere vuoto")
+    @Size(min = 4, message = "La password deve contenere almeno 4 caratteri")
+    private String password;
 
-	public String getEmail() {
-		return email;
-	}
+    private String biografia;
+    private String sitoweb;
+    private String paese;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Enumerated(EnumType.STRING)
+    private TipoUtente tipo;
 
-	public String getPassword() {
-		return password;
-	}
+    private byte[] avatar;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public Utente(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
-	public String getBiografia() {
-		return biografia;
-	}
+    public Utente() {}
 
-	public void setBiografia(String biografia) {
-		this.biografia = biografia;
-	}
+    // Getter e Setter
+    public int getId() {
+        return id;
+    }
 
-	public String getSitoweb() {
-		return sitoweb;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setSitoweb(String sitoweb) {
-		this.sitoweb = sitoweb;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPaese() {
-		return paese;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPaese(String paese) {
-		this.paese = paese;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public byte[] getAvatar() {
-		return avatar;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setAvatar(byte[] avatar) {
-		this.avatar = avatar;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public TipoUtente getTipo() {
-		return tipo;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setTipo(TipoUtente tipo) {
-		this.tipo = tipo;
-	}
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public String getSitoweb() {
+        return sitoweb;
+    }
+
+    public void setSitoweb(String sitoweb) {
+        this.sitoweb = sitoweb;
+    }
+
+    public String getPaese() {
+        return paese;
+    }
+
+    public void setPaese(String paese) {
+        this.paese = paese;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
+    public TipoUtente getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUtente tipo) {
+        this.tipo = tipo;
+    }
 }

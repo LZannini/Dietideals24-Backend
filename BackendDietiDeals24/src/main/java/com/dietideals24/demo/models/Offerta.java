@@ -1,85 +1,86 @@
 package com.dietideals24.demo.models;
 
 import com.dietideals24.demo.enums.StatoOfferta;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Offerta {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private int idUtente;
-	private int idAsta;
-	private float valore;
-	private String data;
-	private String offerente;
-	private StatoOfferta stato;
-	
-	public Offerta(int idUtente, int idAsta, float valore, String data) {
-		this.idUtente = idUtente;
-		this.idAsta = idAsta;
-		this.valore = valore;
-		this.data = data;
-	}
-	
-	public Offerta() {
-		
-	}
-	
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public int getIdUtente() {
-		return idUtente;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int idUtente;
+    private int idAsta;
+    private float valore;
+    private String data;
+    private String offerente;
+    private StatoOfferta stato;
 
-	public void setIdUtente(int idUtente) {
-		this.idUtente = idUtente;
-	}
+    public Offerta(int idUtente, int idAsta, float valore, String data) {
+        this.idUtente = idUtente;
+        this.idAsta = idAsta;
+        this.valore = valore;
+        this.data = data;
+    }
 
-	public int getIdAsta() {
-		return idAsta;
-	}
+    public Offerta() {}
 
-	public void setIdAsta(int idAsta) {
-		this.idAsta = idAsta;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public float getValore() {
-		return valore;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setValore(float valore) {
-		this.valore = valore;
-	}
+    public int getIdUtente() {
+        return idUtente;
+    }
 
-	public String getData() {
-		return data;
-	}
+    public void setIdUtente(int idUtente) {
+        this.idUtente = idUtente;
+    }
 
-	public void setData(String data) {
-		this.data = data;
-	}
+    public int getIdAsta() {
+        return idAsta;
+    }
 
-	public String getOfferente() {
-		return offerente;
-	}
+    public void setIdAsta(int idAsta) {
+        this.idAsta = idAsta;
+    }
 
-	public void setOfferente(String offerente) {
-		this.offerente = offerente;
-	}
+    public float getValore() {
+        return valore;
+    }
 
-	public StatoOfferta getStato() {
-		return stato;
-	}
+    public void setValore(float valore) {
+        this.valore = valore;
+    }
 
-	public void setStato(StatoOfferta stato) {
-		this.stato = stato;
-	}
-	
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getOfferente() {
+        return offerente;
+    }
+
+    public void setOfferente(String offerente) {
+        this.offerente = offerente;
+    }
+
+    public StatoOfferta getStato() {
+        return stato;
+    }
+
+    public void setStato(StatoOfferta stato) {
+        this.stato = stato;
+    }
 }
