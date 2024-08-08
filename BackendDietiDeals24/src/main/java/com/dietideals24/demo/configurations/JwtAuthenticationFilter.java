@@ -2,7 +2,6 @@ package com.dietideals24.demo.configurations;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,11 +19,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-	@Autowired
-    private JwtTokenProvider tokenProvider;
+    
+    private final JwtTokenProvider tokenProvider;
+    private final CustomUserDetailsServiceImplements customUserDetailsService;    
 
-    @Autowired
-    private CustomUserDetailsServiceImplements customUserDetailsService;
+    public JwtAuthenticationFilter(JwtTokenProvider tokenProvider, CustomUserDetailsServiceImplements customUserDetailsService) {
+        this.tokenProvider = tokenProvider;
+        this.customUserDetailsService = customUserDetailsService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

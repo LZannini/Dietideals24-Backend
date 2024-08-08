@@ -3,7 +3,6 @@ package com.dietideals24.demo.serviceimplements;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dietideals24.demo.models.Notifica;
@@ -14,8 +13,11 @@ import com.dietideals24.demo.service.NotificaService;
 @Service("notificaService")
 public class NotificaServiceImplements implements NotificaService {
 	
-	@Autowired
-	private NotificaRepository notificaRepository;
+	private final NotificaRepository notificaRepository;
+	
+	public NotificaServiceImplements(NotificaRepository notificaRepository) {
+		this.notificaRepository = notificaRepository;
+	}
 
 	@Override
 	public List<NotificaDTO> getNotifiche(int idUtente) {

@@ -16,11 +16,13 @@ import com.dietideals24.demo.service.UtenteService;
 
 @RestController
 public class UtenteController {
-	
-	@Autowired
+
     @Qualifier("utenteService")
-    private UtenteService utenteService;
+    private final UtenteService utenteService;
 	
+	public UtenteController(UtenteService utenteService) {
+		this.utenteService = utenteService;
+	}
 	
 	@PostMapping("/utente/registra")
 	public ResponseEntity<UtenteDTO> registra(@RequestBody UtenteDTO utenteDTO) {

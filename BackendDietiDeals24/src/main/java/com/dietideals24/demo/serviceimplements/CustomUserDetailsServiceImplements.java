@@ -2,7 +2,6 @@ package com.dietideals24.demo.serviceimplements;
 
 import java.util.Collections;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +14,6 @@ import com.dietideals24.demo.repository.UtenteRepository;
 @Service
 public class CustomUserDetailsServiceImplements implements UserDetailsService{
 	
-	@Autowired
 	private final UtenteRepository utenteRepository;
 	
 	public CustomUserDetailsServiceImplements(UtenteRepository utenteRepository) {

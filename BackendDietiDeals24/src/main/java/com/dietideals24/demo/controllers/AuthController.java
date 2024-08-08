@@ -1,6 +1,5 @@
 package com.dietideals24.demo.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,14 +24,15 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 @RequestMapping("/auth")
 public class AuthController {
 	
-	@Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtTokenProvider tokenProvider;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider tokenProvider;
+    private final UtenteService utenteService;
     
-    @Autowired
-    private UtenteService utenteService;
+    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider, UtenteService utenteService) {
+    	this.authenticationManager = authenticationManager;
+    	this.tokenProvider = tokenProvider;
+    	this.utenteService = utenteService;
+    }
 
 	
     @PostMapping("/google")

@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -31,14 +30,18 @@ import jakarta.transaction.Transactional;
 @Service("astaService")
 public class AstaServiceImplements implements AstaService {
 	
-	@Autowired
-	private AstaRepository astaRepository;
-	@Autowired
-	private AstaInversaRepository astaInversaRepository;
-	@Autowired
-	private AstaRibassoRepository astaAlRibassoRepository;
-	@Autowired
-	private AstaSilenziosaRepository astaSilenziosaRepository;
+	private final AstaRepository astaRepository;
+	private final AstaInversaRepository astaInversaRepository;
+	private final AstaRibassoRepository astaAlRibassoRepository;
+	private final AstaSilenziosaRepository astaSilenziosaRepository;
+	
+	public AstaServiceImplements(AstaRepository astaRepository, AstaInversaRepository astaInversaRepository, 
+			AstaRibassoRepository astaAlRibassoRepository, AstaSilenziosaRepository astaSilenziosaRepository) {
+		this.astaRepository = astaRepository;
+		this.astaInversaRepository = astaInversaRepository;
+		this.astaAlRibassoRepository = astaAlRibassoRepository;
+		this.astaSilenziosaRepository = astaSilenziosaRepository;
+	}
 
 	@Override
 	@Transactional

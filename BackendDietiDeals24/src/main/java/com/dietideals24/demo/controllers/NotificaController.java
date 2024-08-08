@@ -2,7 +2,6 @@ package com.dietideals24.demo.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +16,12 @@ import com.dietideals24.demo.service.NotificaService;
 @RestController
 public class NotificaController {
 
-	@Autowired
 	@Qualifier("notificaService")
-	private NotificaService notificaService;
+	private final NotificaService notificaService;
+	
+	public NotificaController(NotificaService notificaService) {
+		this.notificaService = notificaService;
+	}
 	
 	@GetMapping("/notifica/mostraTutte")
 	public ResponseEntity<List<NotificaDTO>> mostraNotifiche(@RequestParam Integer idUtente) {

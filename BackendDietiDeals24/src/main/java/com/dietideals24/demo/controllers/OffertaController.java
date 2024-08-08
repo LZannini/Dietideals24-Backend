@@ -2,7 +2,6 @@ package com.dietideals24.demo.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +17,12 @@ import com.dietideals24.demo.service.OffertaService;
 @RestController
 public class OffertaController {
 	
-	@Autowired
     @Qualifier("offertaService")
-    private OffertaService offertaService;
+    private final OffertaService offertaService;
+	
+	public OffertaController(OffertaService offertaService) {
+		this.offertaService = offertaService;
+	}
 	
 	@PostMapping("/offerta/crea")
 	public void crea(@RequestBody OffertaDTO offertaDTO) {

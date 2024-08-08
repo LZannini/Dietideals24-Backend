@@ -2,7 +2,6 @@ package com.dietideals24.demo.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +19,13 @@ import com.dietideals24.demo.service.AstaService;
 
 @RestController
 public class AstaController {
-	
-	@Autowired
-    @Qualifier("astaService")
-    private AstaService astaService;
+    
+	@Qualifier("astaService")
+	private final AstaService astaService;    
+
+    public AstaController(AstaService astaService) {
+        this.astaService = astaService;
+    }
 	
 	@PostMapping("/asta/creaAstaInversa")
 	public ResponseEntity<AstaDTO> crea(@RequestBody AstaInversaDTO asta) {

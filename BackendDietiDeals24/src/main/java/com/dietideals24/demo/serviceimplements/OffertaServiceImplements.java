@@ -3,7 +3,6 @@ package com.dietideals24.demo.serviceimplements;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dietideals24.demo.enums.StatoOfferta;
@@ -15,8 +14,11 @@ import com.dietideals24.demo.service.OffertaService;
 @Service("offertaService")
 public class OffertaServiceImplements implements OffertaService {
 	
-	@Autowired
-	private OffertaRepository offertaRepository;
+	private final OffertaRepository offertaRepository;
+	
+	public OffertaServiceImplements(OffertaRepository offertaRepository) {
+		this.offertaRepository = offertaRepository;
+	}
 
 	@Override
 	public void creaOfferta(OffertaDTO offertaDTO) {

@@ -2,7 +2,6 @@ package com.dietideals24.demo.serviceimplements;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,11 @@ import com.dietideals24.demo.service.UtenteService;
 @Service("utenteService")
 public class UtenteServiceImplements implements UtenteService {
 	
-	@Autowired
-	private UtenteRepository utenteRepository;
+	private final UtenteRepository utenteRepository;
     private final PasswordEncoder passwordEncoder;
     
-    public UtenteServiceImplements(PasswordEncoder passwordEncoder) {
+    public UtenteServiceImplements(UtenteRepository utenteRepository, PasswordEncoder passwordEncoder) {
+    	this.utenteRepository = utenteRepository;
         this.passwordEncoder = passwordEncoder;
     }
 	
