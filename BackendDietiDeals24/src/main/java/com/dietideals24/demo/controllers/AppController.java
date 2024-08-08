@@ -21,7 +21,6 @@ public class AppController {
 	
     @GetMapping("/user")
     public Principal user(Principal principal) {
-    	System.out.println("username: " + principal.getName());
     	return principal;
     }
 	

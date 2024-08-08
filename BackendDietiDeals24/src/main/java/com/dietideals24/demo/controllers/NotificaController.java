@@ -36,7 +36,7 @@ public class NotificaController {
 	@GetMapping("/notifica/mostraLette")
 	public ResponseEntity<List<NotificaDTO>> mostraNotificheLette(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Mostra Notifiche: " + error_string);
+			throw new IllegalArgumentException("Errore Mostra Notifiche Lette: " + error_string);
 		List<NotificaDTO> notificheDTO = notificaService.getNotificheLette(id_utente);
 		if (notificheDTO == null || notificheDTO.isEmpty())
 			return ResponseEntity.notFound().build();
@@ -47,7 +47,7 @@ public class NotificaController {
 	@GetMapping("/notifica/mostraNonLette")
 	public ResponseEntity<List<NotificaDTO>> mostraNotificheNonLette(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Mostra Notifiche: " + error_string);
+			throw new IllegalArgumentException("Errore Mostra Notifiche Non Lette: " + error_string);
 		List<NotificaDTO> notificheDTO = notificaService.getNotificheNonLette(id_utente);
 		if (notificheDTO == null || notificheDTO.isEmpty())
 			return ResponseEntity.notFound().build();

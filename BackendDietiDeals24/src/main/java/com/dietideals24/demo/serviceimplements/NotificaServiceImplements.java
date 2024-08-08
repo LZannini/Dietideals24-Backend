@@ -20,8 +20,7 @@ public class NotificaServiceImplements implements NotificaService {
 	@Override
 	public List<NotificaDTO> getNotifiche(int id_utente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotifiche(id_utente);
-		if (notifiche.isEmpty())
-			return null;
+
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
 			NotificaDTO notificaDTO = creaNotificaDTO(n);
@@ -33,8 +32,7 @@ public class NotificaServiceImplements implements NotificaService {
 	@Override
 	public List<NotificaDTO> getNotificheLette(int id_utente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotificheLette(id_utente);
-		if (notifiche.isEmpty())
-			return null;
+
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
 			NotificaDTO notificaDTO = creaNotificaDTO(n);
@@ -46,8 +44,7 @@ public class NotificaServiceImplements implements NotificaService {
 	@Override
 	public List<NotificaDTO> getNotificheNonLette(int id_utente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotificheNonLette(id_utente);
-		if (notifiche.isEmpty())
-			return null;
+
 		List<NotificaDTO> notificheDTO = new ArrayList<>();
 		for (Notifica n : notifiche) {
 			NotificaDTO notificaDTO = creaNotificaDTO(n);
