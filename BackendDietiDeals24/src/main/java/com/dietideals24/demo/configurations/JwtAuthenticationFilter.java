@@ -11,8 +11,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import com.dietideals24.demo.serviceimplements.CustomUserDetails;
 import com.dietideals24.demo.serviceimplements.CustomUserDetailsServiceImplements;
 
 import jakarta.servlet.FilterChain;

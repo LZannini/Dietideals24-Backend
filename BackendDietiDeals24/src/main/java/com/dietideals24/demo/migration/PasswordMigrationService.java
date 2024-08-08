@@ -1,8 +1,6 @@
 package com.dietideals24.demo.migration;
 
 import java.util.List;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

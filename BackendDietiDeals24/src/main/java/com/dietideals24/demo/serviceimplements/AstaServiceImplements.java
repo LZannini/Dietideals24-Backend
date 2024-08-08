@@ -114,19 +114,7 @@ public class AstaServiceImplements implements AstaService {
 	public List<AstaDTO> trovaTutte() {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.cercaTutte(StatoAsta.ATTIVA);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 	
@@ -134,38 +122,14 @@ public class AstaServiceImplements implements AstaService {
 	public List<AstaDTO> trovaAsteUtente(int id_creatore) {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.filtraPerUtente(id_creatore);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 	
 	public List<AstaDTO> trovaAsteOfferteUtente(int id_utente) {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.filtraPerOfferteUtente(id_utente);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 
@@ -173,19 +137,7 @@ public class AstaServiceImplements implements AstaService {
 	public List<AstaDTO> trovaAstePerParolaChiave(String chiave) {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.filtraPerParolaChiave(chiave, StatoAsta.ATTIVA);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 
@@ -193,19 +145,7 @@ public class AstaServiceImplements implements AstaService {
 	public List<AstaDTO> trovaAstePerCategoria(Categoria categoria) {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.filtraPerCategoria(categoria, StatoAsta.ATTIVA);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 
@@ -213,19 +153,7 @@ public class AstaServiceImplements implements AstaService {
 	public List<AstaDTO> trovaAstePerParolaChiaveAndCategoria(String chiave, Categoria categoria) {
 		List<AstaDTO> aste_trovate = new ArrayList<>();
 		List<Asta> check_aste = astaRepository.filtraPerCategoriaAndParoleChiave(chiave, categoria, StatoAsta.ATTIVA);
-		if (!check_aste.isEmpty()) {
-			for (Asta a : check_aste) {
-				AstaDTO astaDTO = creaAstaDTO(a);
-				if(a instanceof Asta_Ribasso) {
-					astaDTO.setTipo("RIBASSO");
-				} else if (a instanceof Asta_Silenziosa) {
-					astaDTO.setTipo("SILENZIOSA");
-				} else if (a instanceof Asta_Inversa) {
-					astaDTO.setTipo("INVERSA");
-				}
-				aste_trovate.add(astaDTO);
-			}
-		}
+		aste_trovate = riempiListaAste(check_aste, aste_trovate);
 		return aste_trovate;
 	}
 	
@@ -354,5 +282,22 @@ public class AstaServiceImplements implements AstaService {
             asta.setStato(StatoAsta.FALLITA);
         }    
         astaAlRibassoRepository.save(asta);
+    }
+    
+    private List<AstaDTO> riempiListaAste(List<Asta> check_aste, List<AstaDTO> aste_trovate) {
+    	if (!check_aste.isEmpty()) {
+			for (Asta a : check_aste) {
+				AstaDTO astaDTO = creaAstaDTO(a);
+				if(a instanceof Asta_Ribasso) {
+					astaDTO.setTipo("RIBASSO");
+				} else if (a instanceof Asta_Silenziosa) {
+					astaDTO.setTipo("SILENZIOSA");
+				} else if (a instanceof Asta_Inversa) {
+					astaDTO.setTipo("INVERSA");
+				}
+				aste_trovate.add(astaDTO);
+			}
+		}
+    	return aste_trovate;
     }
 }

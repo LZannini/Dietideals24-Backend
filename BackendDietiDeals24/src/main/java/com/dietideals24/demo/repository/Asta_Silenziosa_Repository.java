@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dietideals24.demo.enums.StatoAsta;
-import com.dietideals24.demo.models.Asta_Inversa;
 import com.dietideals24.demo.models.Asta_Silenziosa;
 
 import jakarta.transaction.Transactional;

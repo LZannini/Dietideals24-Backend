@@ -1,8 +1,6 @@
 package com.dietideals24.demo.models.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import com.dietideals24.demo.enums.StatoOfferta;
 
 @SuppressWarnings("serial")

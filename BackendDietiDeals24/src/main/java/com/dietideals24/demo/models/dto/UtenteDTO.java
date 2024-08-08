@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 import com.dietideals24.demo.enums.TipoUtente;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
 @SuppressWarnings("serial")
 public class UtenteDTO implements Serializable {
 	

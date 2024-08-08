@@ -3,10 +3,6 @@ package com.dietideals24.demo.serviceimplements;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +18,6 @@ public class UtenteServiceImplements implements UtenteService {
 	private UtenteRepository utenteRepository;
     private final PasswordEncoder passwordEncoder;
     
-    @Autowired
     public UtenteServiceImplements(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
@@ -98,16 +93,7 @@ public class UtenteServiceImplements implements UtenteService {
 			utente = check_utente.get();
 		
 		if (utente != null) {
-			utenteDTO = new UtenteDTO();
-			utenteDTO.setId(utente.getId());
-			utenteDTO.setUsername(utente.getUsername());
-			utenteDTO.setEmail(utente.getEmail());
-			utenteDTO.setPassword(utente.getPassword());
-			utenteDTO.setBiografia(utente.getBiografia());
-			utenteDTO.setPaese(utente.getPaese());
-			utenteDTO.setSitoweb(utente.getSitoweb());
-			utenteDTO.setTipo(utente.getTipo());
-			utenteDTO.setAvatar(utente.getAvatar());
+			utenteDTO = creaUtenteDTO(utente);
 		}
 		return utenteDTO;
 	}
@@ -122,16 +108,7 @@ public class UtenteServiceImplements implements UtenteService {
 			utente = check_utente.get();
 		
 		if (utente != null) {
-			utenteDTO = new UtenteDTO();
-			utenteDTO.setId(utente.getId());
-			utenteDTO.setUsername(utente.getUsername());
-			utenteDTO.setEmail(utente.getEmail());
-			utenteDTO.setPassword(utente.getPassword());
-			utenteDTO.setBiografia(utente.getBiografia());
-			utenteDTO.setPaese(utente.getPaese());
-			utenteDTO.setSitoweb(utente.getSitoweb());
-			utenteDTO.setTipo(utente.getTipo());
-			utenteDTO.setAvatar(utente.getAvatar());
+			utenteDTO = creaUtenteDTO(utente);
 		}
 		return utenteDTO;
 	}
