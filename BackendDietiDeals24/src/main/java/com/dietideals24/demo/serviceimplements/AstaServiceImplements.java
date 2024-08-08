@@ -142,7 +142,7 @@ public class AstaServiceImplements implements AstaService {
 	@Override
 	public List<AstaDTO> trovaAstePerParolaChiaveAndCategoria(String chiave, Categoria categoria) {
 		List<Asta> checkAste = astaRepository.filtraPerCategoriaAndParoleChiave(chiave, categoria, StatoAsta.ATTIVA);
-		return riempiListaAste(checkAste, new ArrayList<>());
+		return riempiListaAste(checkAste);
 	}
 	
 	private AstaDTO creaAstaDTO(Asta asta) {
