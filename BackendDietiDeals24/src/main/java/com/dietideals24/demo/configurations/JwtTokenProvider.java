@@ -47,7 +47,6 @@ public class JwtTokenProvider {
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String formattedDate = formatter.format(expiryDate);
-        System.out.println("Formatted Date: " + formattedDate);
 
         return Jwts.builder()
                 .setSubject(Integer.toString(userPrincipal.getId()))            

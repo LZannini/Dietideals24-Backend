@@ -20,11 +20,12 @@ public class NotificaController {
 	@Autowired
 	@Qualifier("NotificaService")
 	private NotificaService notificaService;
+	private final String error_string = "Il parametro 'id_utente è null!\n";
 	
 	@GetMapping("/notifica/mostraTutte")
 	public ResponseEntity<List<NotificaDTO>> mostraNotifiche(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Mostra Notifiche: Il parametro 'id_utente è null!\n");
+			throw new IllegalArgumentException("Errore Mostra Notifiche: " + error_string);
 		List<NotificaDTO> notificheDTO = notificaService.getNotifiche(id_utente);
 		if (notificheDTO == null || notificheDTO.isEmpty())
 			return ResponseEntity.notFound().build();
@@ -35,7 +36,7 @@ public class NotificaController {
 	@GetMapping("/notifica/mostraLette")
 	public ResponseEntity<List<NotificaDTO>> mostraNotificheLette(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Mostra Notifiche: Il parametro 'id_utente è null!\n");
+			throw new IllegalArgumentException("Errore Mostra Notifiche: " + error_string);
 		List<NotificaDTO> notificheDTO = notificaService.getNotificheLette(id_utente);
 		if (notificheDTO == null || notificheDTO.isEmpty())
 			return ResponseEntity.notFound().build();
@@ -46,7 +47,7 @@ public class NotificaController {
 	@GetMapping("/notifica/mostraNonLette")
 	public ResponseEntity<List<NotificaDTO>> mostraNotificheNonLette(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Mostra Notifiche: Il parametro 'id_utente è null!\n");
+			throw new IllegalArgumentException("Errore Mostra Notifiche: " + error_string);
 		List<NotificaDTO> notificheDTO = notificaService.getNotificheNonLette(id_utente);
 		if (notificheDTO == null || notificheDTO.isEmpty())
 			return ResponseEntity.notFound().build();
@@ -57,35 +58,35 @@ public class NotificaController {
 	@PutMapping("/notifica/segna")
 	public void marcaLetta(@RequestParam Integer id) {
 		if (id == null)
-			throw new IllegalArgumentException("Errore Lettura Notifica: Il parametro 'id' è null!\n");
+			throw new IllegalArgumentException("Errore Lettura Notifica: " + error_string);
 		notificaService.setNotificaAsLetta(id);
 	}
 	
 	@PutMapping("notifica/segnaTutte")
 	public void marcaTutte(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Marcatura Notifiche: Il parametro 'id_utente' è null!\n");
+			throw new IllegalArgumentException("Errore Marcatura Notifiche: " + error_string);
 		notificaService.setAllNotificheAsLette(id_utente);
 	}
 	
 	@PostMapping("/notifica/rimuovi")
 	public void rimuovi(@RequestParam Integer id) {
 		if (id == null)
-			throw new IllegalArgumentException("Errore Rimozione Notifica: Il parametro 'id' è null!\n");
+			throw new IllegalArgumentException("Errore Rimozione Notifica: " + error_string);
 		notificaService.rimuoviNotifica(id);
 	}
 	
 	@PostMapping("/notifica/svuota")
 	public void svuota(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Azzeramento Notifiche: Il parametro 'id_utente' è null!\n");
+			throw new IllegalArgumentException("Errore Azzeramento Notifiche: " + error_string);
 		notificaService.rimuoviNotifiche(id_utente);
 	}
 	
 	@PostMapping("/notifica/rimuoviLette")
 	public void rimuoviLette(@RequestParam Integer id_utente) {
 		if (id_utente == null)
-			throw new IllegalArgumentException("Errore Rimozione Notifiche Lette: Il parametro 'id_utente' è null!\n");
+			throw new IllegalArgumentException("Errore Rimozione Notifiche Lette: " + error_string);
 		notificaService.rimuoviNotificheLette(id_utente);
 	}
 }	
