@@ -28,7 +28,7 @@ import com.dietideals24.demo.service.AstaService;
 
 import jakarta.transaction.Transactional;
 
-@Service("AstaService")
+@Service("astaService")
 public class AstaServiceImplements implements AstaService {
 	
 	@Autowired

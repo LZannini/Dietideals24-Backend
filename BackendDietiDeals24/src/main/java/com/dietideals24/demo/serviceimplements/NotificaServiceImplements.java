@@ -11,7 +11,7 @@ import com.dietideals24.demo.models.dto.NotificaDTO;
 import com.dietideals24.demo.repository.NotificaRepository;
 import com.dietideals24.demo.service.NotificaService;
 
-@Service("NotificaService")
+@Service("notificaService")
 public class NotificaServiceImplements implements NotificaService {
 	
 	@Autowired

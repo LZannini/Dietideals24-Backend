@@ -18,7 +18,7 @@ import com.dietideals24.demo.service.UtenteService;
 public class UtenteController {
 	
 	@Autowired
-    @Qualifier("UtenteService")
+    @Qualifier("utenteService")
     private UtenteService utenteService;
 	
 	

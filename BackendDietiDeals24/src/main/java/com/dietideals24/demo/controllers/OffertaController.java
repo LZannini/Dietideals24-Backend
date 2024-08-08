@@ -19,7 +19,7 @@ import com.dietideals24.demo.service.OffertaService;
 public class OffertaController {
 	
 	@Autowired
-    @Qualifier("OffertaService")
+    @Qualifier("offertaService")
     private OffertaService offertaService;
 	
 	@PostMapping("/offerta/crea")

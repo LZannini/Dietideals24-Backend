@@ -11,7 +11,7 @@ import com.dietideals24.demo.models.dto.UtenteDTO;
 import com.dietideals24.demo.repository.UtenteRepository;
 import com.dietideals24.demo.service.UtenteService;
 
-@Service("UtenteService")
+@Service("utenteService")
 public class UtenteServiceImplements implements UtenteService {
 	
 	@Autowired

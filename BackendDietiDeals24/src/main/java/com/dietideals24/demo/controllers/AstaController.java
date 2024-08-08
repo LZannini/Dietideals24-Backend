@@ -22,7 +22,7 @@ import com.dietideals24.demo.service.AstaService;
 public class AstaController {
 	
 	@Autowired
-    @Qualifier("AstaService")
+    @Qualifier("astaService")
     private AstaService astaService;
 	
 	@PostMapping("/asta/creaAstaInversa")

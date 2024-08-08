@@ -12,7 +12,7 @@ import com.dietideals24.demo.models.dto.OffertaDTO;
 import com.dietideals24.demo.repository.OffertaRepository;
 import com.dietideals24.demo.service.OffertaService;
 
-@Service("OffertaService")
+@Service("offertaService")
 public class OffertaServiceImplements implements OffertaService {
 	
 	@Autowired
