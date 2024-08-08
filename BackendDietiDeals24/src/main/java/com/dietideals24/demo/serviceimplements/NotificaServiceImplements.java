@@ -22,37 +22,19 @@ public class NotificaServiceImplements implements NotificaService {
 	@Override
 	public List<NotificaDTO> getNotifiche(int idUtente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotifiche(idUtente);
-
-		List<NotificaDTO> notificheDTO = new ArrayList<>();
-		for (Notifica n : notifiche) {
-			NotificaDTO notificaDTO = creaNotificaDTO(n);
-			notificheDTO.add(notificaDTO);
-		}
-		return notificheDTO;
+		return riempiListaNotifiche(notifiche);	
 	}
 
 	@Override
 	public List<NotificaDTO> getNotificheLette(int idUtente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotificheLette(idUtente);
-
-		List<NotificaDTO> notificheDTO = new ArrayList<>();
-		for (Notifica n : notifiche) {
-			NotificaDTO notificaDTO = creaNotificaDTO(n);
-			notificheDTO.add(notificaDTO);
-		}
-		return notificheDTO;
+		return riempiListaNotifiche(notifiche);	
 	}
 
 	@Override
 	public List<NotificaDTO> getNotificheNonLette(int idUtente) {
 		List<Notifica> notifiche = notificaRepository.trovaNotificheNonLette(idUtente);
-
-		List<NotificaDTO> notificheDTO = new ArrayList<>();
-		for (Notifica n : notifiche) {
-			NotificaDTO notificaDTO = creaNotificaDTO(n);
-			notificheDTO.add(notificaDTO);
-		}
-		return notificheDTO;
+		return riempiListaNotifiche(notifiche);		
 	}
 	
 	@Override
@@ -80,6 +62,15 @@ public class NotificaServiceImplements implements NotificaService {
 		notificaRepository.eliminaNotificheLette(idUtente);
 	}
 	
+	private List<NotificaDTO> riempiListaNotifiche(List<Notifica> notifiche) {
+		List<NotificaDTO> notificheDTO = new ArrayList<>();
+		for (Notifica n : notifiche) {
+			NotificaDTO notificaDTO = creaNotificaDTO(n);
+			notificheDTO.add(notificaDTO);
+		}
+		return notificheDTO;
+	}
+	
 	private NotificaDTO creaNotificaDTO(Notifica notifica) {
 		NotificaDTO notificaDTO = new NotificaDTO();
 		notificaDTO.setId(notifica.getId());
@@ -94,4 +85,5 @@ public class NotificaServiceImplements implements NotificaService {
 		notificaDTO.setLetta(notifica.isLetta());
 		return notificaDTO;
 	}
+	
 }

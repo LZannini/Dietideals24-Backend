@@ -85,31 +85,13 @@ public class UtenteServiceImplements implements UtenteService {
 	@Override
 	public UtenteDTO recuperaUtente(int id, String email) {
 		java.util.Optional<Utente> checkUtente = utenteRepository.findByEmailAndId(email, id);
-		Utente utente = null;
-		UtenteDTO utenteDTO = null;
-		
-		if (checkUtente.isPresent())
-			utente = checkUtente.get();
-		
-		if (utente != null) {
-			utenteDTO = creaUtenteDTO(utente);
-		}
-		return utenteDTO;
+		return recuperaUtente(checkUtente);
 	}
 	
 	@Override
 	public UtenteDTO recuperaUtenteById(int id) {
 		java.util.Optional<Utente> checkUtente = utenteRepository.findById(id);
-		Utente utente = null;
-		UtenteDTO utenteDTO = null;
-		
-		if (checkUtente.isPresent())
-			utente = checkUtente.get();
-		
-		if (utente != null) {
-			utenteDTO = creaUtenteDTO(utente);
-		}
-		return utenteDTO;
+		return recuperaUtente(checkUtente);
 	}
 	
 	private static Utente creaUtente(UtenteDTO utenteDTO) {
@@ -138,16 +120,21 @@ public class UtenteServiceImplements implements UtenteService {
     }
 
 	@Override
-	public Utente recuperaUtenteByEmail(String email) {
-		Optional<Utente> u = utenteRepository.findByEmail(email);
-		Utente utente = null;
-		
-		if(u.isPresent()) {
-			utente = u.get();
-		}
-		
-		return utente;
+	public UtenteDTO recuperaUtenteByEmail(String email) {
+		Optional<Utente> checkUtente = utenteRepository.findByEmail(email);
+		return recuperaUtente(checkUtente);
 	}
 
-	
+	private UtenteDTO recuperaUtente(Optional<Utente> checkUtente) {
+		Utente utente = null;
+		UtenteDTO utenteDTO = null;
+		
+		if (checkUtente.isPresent())
+			utente = checkUtente.get();
+		
+		if (utente != null) {
+			utenteDTO = creaUtenteDTO(utente);
+		}
+		return utenteDTO;
+	}
 }

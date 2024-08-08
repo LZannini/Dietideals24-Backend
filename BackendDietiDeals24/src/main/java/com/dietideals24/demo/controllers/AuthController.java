@@ -42,15 +42,15 @@ public class AuthController {
             String email = payload.getEmail();
             String nome = (String) payload.get("name");
 
-            Utente utente = utenteService.recuperaUtenteByEmail(email);
+            UtenteDTO utente = utenteService.recuperaUtenteByEmail(email);
             String jwtToken;
             if (utente == null) {
-                UtenteDTO utenteDto = new UtenteDTO();
-                utenteDto.setEmail(email);
-                utenteDto.setUsername(nome);
-                utenteDto.setPassword("");
-                utenteDto = utenteService.registraUtente(utenteDto);
-                jwtToken = tokenProvider.generateTokenFromUserId(utenteDto.getId());
+                UtenteDTO utenteDTO = new UtenteDTO();
+                utenteDTO.setEmail(email);
+                utenteDTO.setUsername(nome);
+                utenteDTO.setPassword("");
+                utenteDTO = utenteService.registraUtente(utenteDTO);
+                jwtToken = tokenProvider.generateTokenFromUserId(utenteDTO.getId());
             } else {
                 jwtToken = tokenProvider.generateTokenFromUserId(utente.getId());            	
             }
