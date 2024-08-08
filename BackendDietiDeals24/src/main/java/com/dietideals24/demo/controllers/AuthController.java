@@ -18,23 +18,23 @@ import com.dietideals24.demo.configurations.JwtAuthenticationResponse;
 import com.dietideals24.demo.configurations.JwtTokenProvider;
 import com.dietideals24.demo.models.Utente;
 import com.dietideals24.demo.models.dto.UtenteDTO;
-import com.dietideals24.demo.repository.UtenteRepository;
 import com.dietideals24.demo.service.UtenteService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-
-    @Autowired
+	
+	@Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
     private JwtTokenProvider tokenProvider;
-
+    
     @Autowired
     private UtenteService utenteService;
 
+	
     @PostMapping("/google")
     public ResponseEntity<?> googleLogin(@RequestParam("idToken") String idToken) {
         try {
@@ -43,38 +43,38 @@ public class AuthController {
             String nome = (String) payload.get("name");
 
             Utente utente = utenteService.recuperaUtenteByEmail(email);
-            String jwtToken;
+            String jwtToken = new String();
             if (utente == null) {
                 UtenteDTO utenteDTO = new UtenteDTO();
                 utenteDTO.setEmail(email);
                 utenteDTO.setUsername(nome);
-                utenteDTO.setPassword(""); // Considerare di non impostare una password
+                utenteDTO.setPassword("");
                 utenteDTO = utenteService.registraUtente(utenteDTO);
                 jwtToken = tokenProvider.generateTokenFromUserId(utenteDTO.getId());
             } else {
-                jwtToken = tokenProvider.generateTokenFromUserId(utente.getId());
+                jwtToken = tokenProvider.generateTokenFromUserId(utente.getId());            	
             }
 
             return ResponseEntity.ok(new JwtAuthenticationResponse(jwtToken));
-        } catch (GoogleIdToken.IdTokenException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token Google non valido o scaduto");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore interno del server");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token google non valido");
         }
     }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UtenteDTO utenteDTO) {
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            utenteDTO.getEmail(), utenteDTO.getPassword()));
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            String token = tokenProvider.generateToken(authentication);
-            return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-        } catch (AuthenticationException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenziali non valide");
-        }
-    }
+	
+	 @PostMapping("/login")
+		public ResponseEntity<?> login(@RequestBody UtenteDTO utenteDTO) {
+		 	try {
+				Authentication authentication = authenticationManager.authenticate(
+		                new UsernamePasswordAuthenticationToken(
+		                        utenteDTO.getEmail(), utenteDTO.getPassword()));
+	
+		        SecurityContextHolder.getContext().setAuthentication(authentication);
+		        
+		        String token = tokenProvider.generateToken(authentication);
+		        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+		 } catch (AuthenticationException e) {
+		        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenziali non valide");
+		    } 
+		}
+	
 }
